@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Finance - Category Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen overflow-y-auto bg-[#FAF8FF] font-sans text-[#131B2E]">
+
+    <div class="flex min-h-screen relative">
+        <!-- SIDEBAR -->
+        <aside class="w-72 bg-[#0F172A] text-white flex flex-col p-6 fixed h-full z-10">
+            <div class="mb-10">
+                <h1 class="text-2xl font-bold tracking-tight">Nexus Finance</h1>
+                <p class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">The Financial Architect by Intelligent System</p>
+            </div>
+
+            <nav class="flex-1 space-y-2 text-gray-400">
+                <a href="index.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-th-large"></i>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <a href="Time-Analysis.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="far fa-clock"></i>
+                    <span>Time Analysis</span>
+                </a>
+                <a href="Category-Manager.html" class="flex items-center space-x-3 p-3 rounded-xl bg-[#1E3A8A]/30 text-blue-400">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Category Manager</span>
+                </a>
+                <a href="Goals-Budgeting.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Goals Budgeting</span>
+                </a>
+                <a href="Reports-Export.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="far fa-chart-bar"></i>
+                    <span>Reports & Export</span>
+                </a>
+                <a href="Community-Insight.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-users"></i>
+                    <span>Community & Insight</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto space-y-2 text-gray-400 pt-6 border-t border-slate-800">
+                <a href="Settings.html" class="flex items-center space-x-3 p-3 hover:text-white transition">
+                    <i class="fas fa-cog"></i>
+                    <span class="">Settings</span>
+                </a>
+                <a href="Profile.html" class="flex items-center space-x-3 p-3 hover:text-white transition">
+                    <i class="far fa-user"></i>
+                    <span class="">Profile</span>
+                </a>
+            </div>
+            
+            <div class="mt-8 space-y-2 text-gray-400 text-sm">
+                <a href="#" class="flex items-center space-x-3 hover:text-white transition">
+                    <i class="far fa-question-circle"></i>
+                    <span>Help Center</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 hover:text-white transition mt-4">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN LAYOUT -->
+        <div class="flex-1 ml-72 flex flex-col w-full min-h-screen">
+            <!-- HEADER (Spans full width above columns) -->
+            <header class="flex justify-between items-center px-8 pt-8 pb-4 mb-6">
+                <div class="relative w-full max-w-lg">
+                    <span class="absolute inset-y-0 left-4 flex items-center text-gray-400">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" placeholder="Search transactions, forecasts, or temporal trends..." class="w-full pl-12 pr-4 py-3 rounded-full bg-white border border-gray-100 focus:border-blue-500 outline-none shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] transition text-sm">
+                </div>
+
+                <div class="flex items-center space-x-6 shrink-0">
+                    <button class="bg-[#2563EB] text-white px-5 py-2.5 rounded-full flex items-center space-x-2 shadow-lg shadow-blue-200 hover:bg-blue-700 transition text-sm font-medium">
+                        <i class="fas fa-upload text-sm"></i>
+                        <span>Upload Mutasi</span>
+                    </button>
+                    <div class="relative text-gray-400 cursor-pointer">
+                        <i class="far fa-bell text-xl"></i>
+                    </div>
+                    <a href="Settings.html" aria-label="Settings"><i class="fas fa-cog text-gray-400 text-[20px] cursor-pointer hover:text-gray-600 transition"></i></a>
+                    <a href="Profile.html" class="flex items-center space-x-3 border-l pl-6 border-gray-200 cursor-pointer hover:opacity-80 transition block">
+                        <div class="text-right leading-tight">
+                            <p class="font-bold text-sm text-[#0F172A]">Architect Prime</p>
+                            <p class="text-[9px] text-gray-400 uppercase tracking-widest font-black">Pro Account</p>
+                        </div>
+                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Avatar" class="w-10 h-10 rounded-full ring-2 ring-blue-50">
+                    </a>
+                </div>
+            </header>
+
+            <!-- PAGE TITLE BLOCK -->
+            <div class="flex justify-between items-end px-8 mb-10 w-full">
+                <div class="max-w-2xl">
+                    <h1 class="text-[2.5rem] font-black tracking-tight text-[#0F172A] mb-2 leading-none">Category Manager</h1>
+                    <p class="text-[13px] text-gray-500 font-medium leading-relaxed">Architect your spending boundaries and visual identity. Fine-tune your financial structure with precision and aesthetic control.</p>
+                </div>
+                <button class="bg-[#2563EB] text-white px-5 py-2.5 rounded-full flex items-center space-x-2 shadow-lg shadow-blue-200 hover:bg-blue-700 transition text-sm font-bold shrink-0">
+                    <i class="fas fa-plus"></i>
+                    <span>New Category</span>
+                </button>
+            </div>
+
+            <!-- CONTENT AREA (Two Columns) -->
+            <div class="flex flex-1 px-8 pb-10 gap-8">
+                <!-- CENTER CONTENT (Left Side) -->
+                <main class="flex-1">
+                    <!-- ESSENTIAL EXPENSES -->
+                    <section class="mb-10">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-sm font-black tracking-widest uppercase text-[#0F172A]">Essential Expenses</h3>
+                            <span class="bg-white border border-gray-100 text-gray-500 text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm">4 Categories</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-6">
+                            <!-- Housing Card -->
+                            <div class="bg-white rounded-[2rem] p-8 shadow-[0_4px_30px_-10px_rgba(0,0,0,0.03)] border-2 border-[#2563EB] cursor-pointer relative overflow-hidden">
+                                <div class="flex justify-between items-start mb-10">
+                                    <div class="w-12 h-12 rounded-2xl bg-[#EFF6FF] flex items-center justify-center text-[#2563EB]">
+                                        <i class="fas fa-home text-xl"></i>
+                                    </div>
+                                    <div class="flex space-x-3 text-gray-400">
+                                        <i class="fas fa-pen hover:text-[#2563EB] transition cursor-pointer text-sm"></i>
+                                        <i class="fas fa-ellipsis-v hover:text-[#2563EB] transition cursor-pointer text-sm ml-2"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <h4 class="text-xl font-bold text-[#0F172A] mb-1">Housing & Rent</h4>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-gray-400">FIXED MONTHLY</span>
+                                </div>
+                                <div class="flex justify-between mb-4">
+                                    <div>
+                                        <span class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Spent</span>
+                                        <span class="block text-xl font-black text-[#0F172A]">$1,200.00</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Budget</span>
+                                        <span class="block text-xl font-black text-[#0F172A]">$1,500.00</span>
+                                    </div>
+                                </div>
+                                <div class="w-full h-2.5 bg-[#EFF6FF] rounded-full mb-4">
+                                    <div class="h-full bg-[#2563EB] rounded-full" style="width: 80%"></div>
+                                </div>
+                                <div class="flex justify-between items-center text-[11px] font-bold">
+                                    <span class="text-[#2563EB]">80% Utilized</span>
+                                    <span class="text-gray-400">$300 Left</span>
+                                </div>
+                            </div>
+
+                            <!-- Groceries Card -->
+                            <div class="bg-white rounded-[2rem] p-8 shadow-[0_4px_30px_-10px_rgba(0,0,0,0.03)] border-2 border-transparent hover:border-gray-100 transition cursor-pointer">
+                                <div class="flex justify-between items-start mb-10">
+                                    <div class="w-12 h-12 rounded-2xl bg-[#FFF7ED] flex items-center justify-center text-[#EA580C]">
+                                        <i class="fas fa-utensils text-xl"></i>
+                                    </div>
+                                    <div class="flex space-x-3 text-gray-400">
+                                        <i class="fas fa-pen hover:text-[#EA580C] transition cursor-pointer text-sm"></i>
+                                        <i class="fas fa-ellipsis-v hover:text-[#EA580C] transition cursor-pointer text-sm ml-2"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <h4 class="text-xl font-bold text-[#0F172A] mb-1">Groceries</h4>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-gray-400">VARIABLE ESSENTIAL</span>
+                                </div>
+                                <div class="flex justify-between mb-4">
+                                    <div>
+                                        <span class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Spent</span>
+                                        <span class="block text-xl font-black text-[#0F172A]">$425.50</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Budget</span>
+                                        <span class="block text-xl font-black text-[#0F172A]">$400.00</span>
+                                    </div>
+                                </div>
+                                <div class="w-full h-2.5 bg-[#FEF2F2] rounded-full mb-4">
+                                    <div class="h-full bg-[#DC2626] rounded-full" style="width: 100%"></div>
+                                </div>
+                                <div class="flex justify-between items-center text-[11px] font-bold">
+                                    <span class="text-[#DC2626]">106% Over-budget</span>
+                                    <span class="text-[#DC2626]">-$25.50 Over</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- INCOME SOURCES -->
+                    <section>
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-sm font-black tracking-widest uppercase text-[#0F172A]">Income Sources</h3>
+                            <span class="bg-white border border-gray-100 text-gray-500 text-[10px] font-bold px-3 py-1.5 rounded-full shadow-sm">2 Categories</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-6">
+                            <!-- Primary Salary Card -->
+                            <div class="bg-white rounded-[2rem] p-8 shadow-[0_4px_30px_-10px_rgba(0,0,0,0.03)] border-2 border-transparent hover:border-gray-100 transition cursor-pointer">
+                                <div class="flex justify-between items-start mb-10">
+                                    <div class="w-12 h-12 rounded-2xl bg-[#F0FDF4] flex items-center justify-center text-[#16A34A]">
+                                        <i class="fas fa-briefcase text-xl"></i>
+                                    </div>
+                                    <div class="flex space-x-3 text-gray-400">
+                                        <i class="fas fa-pen hover:text-[#16A34A] transition cursor-pointer text-sm"></i>
+                                        <i class="fas fa-ellipsis-v hover:text-[#16A34A] transition cursor-pointer text-sm ml-2"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <h4 class="text-xl font-bold text-[#0F172A] mb-1">Primary Salary</h4>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-gray-400">MONTHLY INCOME</span>
+                                </div>
+                                <div class="flex justify-between mb-4">
+                                    <div>
+                                        <span class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Received</span>
+                                        <span class="block text-xl font-black text-[#0F172A]">$5,400.00</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Target</span>
+                                        <span class="block text-xl font-black text-[#0F172A]">$5,400.00</span>
+                                    </div>
+                                </div>
+                                <div class="w-full h-2.5 bg-[#F0FDF4] rounded-full mb-4">
+                                    <div class="h-full bg-[#16A34A] rounded-full" style="width: 100%"></div>
+                                </div>
+                                <div class="flex justify-between items-center text-[11px] font-bold">
+                                    <span class="text-[#16A34A]">Goal Reached</span>
+                                    <span class="text-gray-400">Completed</span>
+                                </div>
+                            </div>
+
+                            <!-- Freelance Work Card -->
+                            <div class="bg-white rounded-[2rem] p-8 shadow-[0_4px_30px_-10px_rgba(0,0,0,0.03)] border-2 border-transparent hover:border-gray-100 transition cursor-pointer">
+                                <div class="flex justify-between items-start mb-10">
+                                    <div class="w-12 h-12 rounded-2xl bg-[#FAF5FF] flex items-center justify-center text-[#A855F7]">
+                                        <i class="fas fa-money-bill-wave text-xl"></i>
+                                    </div>
+                                    <div class="flex space-x-3 text-gray-400">
+                                        <i class="fas fa-pen hover:text-[#A855F7] transition cursor-pointer text-sm"></i>
+                                        <i class="fas fa-ellipsis-v hover:text-[#A855F7] transition cursor-pointer text-sm ml-2"></i>
+                                    </div>
+                                </div>
+                                <div class="mb-6">
+                                    <h4 class="text-xl font-bold text-[#0F172A] mb-1">Freelance Work</h4>
+                                    <span class="text-[9px] font-black uppercase tracking-widest text-gray-400">PASSIVE/SIDE</span>
+                                </div>
+                                <div class="flex justify-between mb-4">
+                                    <div>
+                                        <span class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Received</span>
+                                        <span class="block text-xl font-black text-[#0F172A]">$1,250.00</span>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="block text-[10px] uppercase font-bold text-gray-400 mb-1">Target</span>
+                                        <span class="block text-xl font-black text-[#0F172A]">$2,000.00</span>
+                                    </div>
+                                </div>
+                                <div class="w-full h-2.5 bg-[#FAF5FF] rounded-full mb-4">
+                                    <div class="h-full bg-[#A855F7] rounded-full" style="width: 62%"></div>
+                                </div>
+                                <div class="flex justify-between items-center text-[11px] font-bold">
+                                    <span class="text-[#A855F7]">62% of Target</span>
+                                    <span class="text-gray-400">$750 remaining</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+
+                <!-- RIGHT PANEL (Category Architect) -->
+                <aside class="w-[24rem] shrink-0">
+                    <div class="flex items-center space-x-4 mb-8">
+                        <div class="w-12 h-12 rounded-2xl bg-[#EFF6FF] flex items-center justify-center text-[#2563EB] shadow-sm">
+                            <i class="fas fa-cube text-xl"></i>
+                        </div>
+                        <h3 class="text-[20px] font-black text-[#0F172A] leading-tight">Category<br>Architect</h3>
+                    </div>
+
+                    <div class="bg-white rounded-[2rem] p-6 border border-gray-100 shadow-sm flex items-center space-x-5 mb-8">
+                        <div class="w-[3.5rem] h-[3.5rem] rounded-2xl bg-[#EFF6FF] flex items-center justify-center text-[#2563EB]">
+                            <i class="fas fa-home text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-[17px] font-black text-[#0F172A] mb-1">Housing & Rent</h4>
+                            <p class="text-xs text-gray-500 font-medium">Active Selection</p>
+                        </div>
+                    </div>
+
+                    <form class="space-y-8">
+                        <!-- Category Name -->
+                        <div>
+                            <label for="input-name" class="block text-[9px] font-black tracking-widest text-gray-400 uppercase mb-3">Category Name</label>
+                            <input type="text" id="input-name" name="category_name" value="Housing & Rent" class="w-full bg-white border border-gray-200 rounded-xl px-5 py-3.5 text-[15px] font-bold text-[#0F172A] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)]">
+                        </div>
+
+                        <!-- Visual Identity -->
+                        <div>
+                            <label class="block text-[9px] font-black tracking-widest text-gray-400 uppercase mb-4">Visual Identity (Color & Icon)</label>
+                            <!-- Colors -->
+                            <div class="flex space-x-3 mb-5">
+                                <button type="button" aria-label="Blue" class="w-10 h-10 rounded-full bg-[#2563EB] border-[3px] border-white shadow-[0_0_0_2px_rgba(37,99,235,1)] hover:scale-110 transition"></button>
+                                <button type="button" aria-label="Green" class="w-10 h-10 rounded-full bg-[#16A34A] border-4 border-transparent hover:scale-110 transition"></button>
+                                <button type="button" aria-label="Orange" class="w-10 h-10 rounded-full bg-[#EA580C] border-4 border-transparent hover:scale-110 transition"></button>
+                                <button type="button" aria-label="Purple" class="w-10 h-10 rounded-full bg-[#A855F7] border-4 border-transparent hover:scale-110 transition"></button>
+                                <button type="button" aria-label="Red" class="w-10 h-10 rounded-full bg-[#EF4444] border-4 border-transparent hover:scale-110 transition"></button>
+                            </div>
+                            <!-- Icons -->
+                            <div class="flex space-x-3 flex-wrap gap-y-3">
+                                <button type="button" aria-label="Building" class="w-11 h-11 rounded-[0.85rem] border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-blue-200 hover:text-blue-500 hover:bg-blue-50 transition shadow-sm">
+                                    <i class="fas fa-building"></i>
+                                </button>
+                                <button type="button" aria-label="Home" class="w-11 h-11 rounded-[0.85rem] border border-[#2563EB] bg-[#EFF6FF] flex items-center justify-center text-[#2563EB] shadow-sm">
+                                    <i class="fas fa-home"></i>
+                                </button>
+                                <button type="button" aria-label="Store" class="w-11 h-11 rounded-[0.85rem] border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-blue-200 hover:text-blue-500 hover:bg-blue-50 transition shadow-sm">
+                                    <i class="fas fa-store"></i>
+                                </button>
+                                <button type="button" aria-label="City" class="w-11 h-11 rounded-[0.85rem] border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-blue-200 hover:text-blue-500 hover:bg-blue-50 transition shadow-sm">
+                                    <i class="fas fa-city"></i>
+                                </button>
+                                <button type="button" aria-label="More Options" class="w-11 h-11 rounded-[0.85rem] border border-gray-200 bg-white flex items-center justify-center text-gray-400 hover:border-gray-300 hover:bg-gray-50 transition shadow-sm">
+                                    <i class="fas fa-ellipsis-h text-xs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Budget Limit -->
+                        <div>
+                            <label for="input-budget" class="block text-[9px] font-black tracking-widest text-gray-400 uppercase mb-3">Budget Limit (Monthly)</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-5 flex items-center text-[#0F172A] font-bold text-[15px]">
+                                    $
+                                </span>
+                                <input type="text" id="input-budget" name="category_budget" value="1,500.00" class="w-full bg-white border border-gray-200 rounded-xl pl-10 pr-5 py-3.5 text-[15px] font-bold text-[#0F172A] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition shadow-[0_2px_10px_-4px_rgba(0,0,0,0.02)]">
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex space-x-3 pt-4 mb-10">
+                            <button type="button" class="flex-1 bg-[#0F172A] text-white rounded-full py-4 text-sm font-bold hover:bg-slate-800 transition shadow-lg">
+                                Apply Changes
+                            </button>
+                            <button type="button" aria-label="Delete Category" class="w-[3.5rem] h-[3.5rem] bg-white border border-red-100 rounded-full flex items-center justify-center text-red-500 hover:bg-red-50 hover:border-red-200 transition shadow-sm shrink-0">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+
+                        <!-- Tip Box -->
+                        <div class="bg-[#F0FDF4] rounded-[1.5rem] p-6 mt-4 border border-[#16A34A]/20 flex items-start space-x-4">
+                            <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-[0_2px_10px_-2px_rgba(22,163,74,0.2)] shrink-0">
+                                <i class="far fa-lightbulb text-[#16A34A] text-sm mt-0.5"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-[9px] font-black tracking-widest uppercase text-[#16A34A] mb-2 leading-none mt-1">Architect's Tip</h5>
+                                <p class="text-[11px] text-[#16A34A] leading-relaxed font-medium">Categories with limits exceeding 30% of your net income are highlighted in the dashboard overview to maintain structural integrity of your financial plan.</p>
+                            </div>
+                        </div>
+                    </form>
+
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Sub-Menu (Optional matching) -->
+    <script src="js/main.js"></script>
+</body>
+</html>

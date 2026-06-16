@@ -1,0 +1,47 @@
+Rule menjalankan server python.
+
+🚀 Cara Menyalakan Server Python (FastAPI)
+1. Buka Terminal di VS Code:
+Klik menu Terminal di bagian atas layar, lalu pilih New Terminal (atau tekan `Ctrl + `` di keyboard).
+
+2. Masuk ke "Ruang Mesin" (Folder Backend):
+Di terminal yang baru terbuka, ketik perintah ini lalu tekan Enter:
+
+___________________
+## code :
+cd backend
+___________________
+
+(Pastikan tulisan di sebelah kiri terminalmu sudah berakhiran ...\backend>)
+
+3. Nyalakan Mesinnya!
+Ketik perintah sakti ini lalu tekan Enter:
+
+____________________
+## code :
+python main.py
+____________________
+
+(Atau alternatifnya jika kode di atas tidak jalan: uvicorn main:app --reload)
+
+
+✅ Tanda Kalau Sudah Berhasil:
+Jika di terminalmu muncul tulisan berwarna hijau seperti:
+
+INFO: Application startup complete.
+🚀 Menyalakan Mesin Nexus Finance di Port 8000...
+
+Berarti servermu sudah resmi menyala dan "Antigravity" siap bekerja!
+
+Langkah Selanjutnya:
+Kembali ke browser kamu (di halaman Dashboard).
+
+Klik OK pada pop-up error tersebut.
+
+Refresh (Tekan F5) halaman web-mu.
+
+Coba klik Upload Mutasi sekali lagi.
+
+Perhatikan keajaibannya: Radar Chart-nya akan langsung mekar dan angka saldo di kiri atas akan langsung berubah dari $2,482,190 menjadi total rupiah yang sebenarnya!
+
+Ayo nyalakan servernya sekarang, Daffa, dan beri tahu saya kalau grafiknya sudah berhasil menari! 🔥

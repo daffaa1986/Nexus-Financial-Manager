@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Analysis - Nexus Finance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="min-h-screen overflow-y-auto bg-[#FAF8FF] font-sans text-[#131B2E]">
+
+    <div class="flex min-h-screen">
+        <!-- SIDEBAR -->
+        <aside class="w-72 bg-[#0F172A] text-white flex flex-col p-6 fixed h-full z-10">
+            <div class="mb-10">
+                <h1 class="text-2xl font-bold tracking-tight">Nexus Finance</h1>
+                <p class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">The Financial Architect by Intelligent System</p>
+            </div>
+
+            <nav class="flex-1 space-y-2 text-gray-400">
+                <a href="index.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-th-large"></i>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <a href="Time-Analysis.html" class="flex items-center space-x-3 p-3 rounded-xl bg-[#1E3A8A]/30 text-blue-400">
+                    <i class="far fa-clock"></i>
+                    <span>Time Analysis</span>
+                </a>
+                <a href="Category-Manager.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Category Manager</span>
+                </a>
+                <a href="Goals-Budgeting.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Goals Budgeting</span>
+                </a>
+                <a href="Reports-Export.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="far fa-chart-bar"></i>
+                    <span>Reports & Export</span>
+                </a>
+                <a href="Community-Insight.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-users"></i>
+                    <span>Community & Insight</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto space-y-2 text-gray-400 pt-6 border-t border-slate-800">
+                <a href="Settings.html" class="flex items-center space-x-3 p-3 hover:text-white transition">
+                    <i class="fas fa-cog"></i>
+                    <span class="">Settings</span>
+                </a>
+                <a href="Profile.html" class="flex items-center space-x-3 p-3 hover:text-white transition">
+                    <i class="far fa-user"></i>
+                    <span class="">Profile</span>
+                </a>
+            </div>
+            
+            <div class="mt-8 space-y-2 text-gray-400 text-sm">
+                <a href="#" class="flex items-center space-x-3 hover:text-white transition">
+                    <i class="far fa-question-circle"></i>
+                    <span>Help Center</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 hover:text-white transition mt-4">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="flex-1 ml-72 p-10 overflow-y-auto">
+            <!-- HEADER -->
+            <header class="flex justify-between items-center mb-10 pb-4">
+                <div class="relative w-1/2">
+                    <span class="absolute inset-y-0 left-4 flex items-center text-gray-400">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" placeholder="Search transactions, forecasts, or temporal trends..." class="w-full pl-12 pr-4 py-3 rounded-full bg-white border border-gray-100 focus:border-blue-500 outline-none shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] transition text-sm">
+                </div>
+
+                <div class="flex items-center space-x-6">
+                    <button class="bg-[#2563EB] text-white px-5 py-2.5 rounded-full flex items-center space-x-2 shadow-lg shadow-blue-200 hover:bg-blue-700 transition text-sm font-medium">
+                        <i class="fas fa-upload text-sm"></i>
+                        <span>Upload Mutasi</span>
+                    </button>
+                    <div class="relative text-gray-400 cursor-pointer">
+                        <i class="far fa-bell text-xl"></i>
+                    </div>
+                    <a href="Settings.html" aria-label="Settings"><i class="fas fa-cog text-gray-400 text-[20px] cursor-pointer hover:text-gray-600 transition"></i></a>
+                    <a href="Profile.html" class="flex items-center space-x-3 border-l pl-6 border-gray-200 cursor-pointer hover:opacity-80 transition block">
+                        <div class="text-right leading-tight">
+                            <p class="font-bold text-sm text-[#0F172A]">Architect Prime</p>
+                            <p class="text-[9px] text-gray-400 uppercase tracking-widest font-black">Pro Account</p>
+                        </div>
+                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Avatar" class="w-10 h-10 rounded-full ring-2 ring-blue-50">
+                    </a>
+                </div>
+            </header>
+
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em] mb-1">Temporal Intelligence Dashboard</p>
+                    <h1 class="text-[2.5rem] font-black tracking-tight leading-none text-[#0F172A]">Time-Based<br>Analysis</h1>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="bg-white px-5 py-2 rounded-xl text-xs font-bold text-blue-600 shadow-sm border border-gray-100">Monthly</button>
+                    <button class="bg-transparent text-gray-500 hover:bg-white border border-transparent hover:border-gray-100 px-5 py-2 rounded-xl text-xs font-bold transition">Quarterly</button>
+                    <button class="bg-transparent text-gray-500 hover:bg-white border border-transparent hover:border-gray-100 px-5 py-2 rounded-xl text-xs font-bold transition">Yearly</button>
+                    <button class="bg-white border border-gray-100 px-4 py-2 rounded-xl text-xs font-bold shadow-sm flex items-center space-x-2 ml-2 text-gray-600">
+                        <i class="far fa-calendar text-gray-400"></i>
+                        <span>Date Range</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- GRID ROW 1 -->
+            <div class="grid grid-cols-12 gap-8 mb-8">
+                <!-- Predictive Flow -->
+                <div class="col-span-8 bg-white rounded-[2rem] p-8 shadow-[0_4px_30px_-10px_rgba(0,0,0,0.03)] border border-gray-50 flex flex-col justify-between">
+                    <div class="flex justify-between items-start mb-10">
+                        <div class="max-w-sm">
+                            <h3 class="text-lg font-bold mb-2 text-[#0F172A]">Predictive Expenditure Flow</h3>
+                            <p class="text-[11px] text-gray-500 leading-relaxed font-medium">Architect insight: Spending projected to <span class="text-blue-500 font-bold"><i class="fas fa-location-arrow -rotate-45 relative top-px mr-0.5"></i> increase by 12.4%</span> in late Q4 due to recurring renewals.</p>
+                        </div>
+                        <div class="bg-[#F0FDF4] text-[#16A34A] px-4 py-2 rounded-xl flex items-center space-x-3 border border-green-100">
+                            <i class="fas fa-arrow-trend-up text-lg"></i>
+                            <div class="text-left leading-tight">
+                                <span class="block text-[8px] uppercase font-black tracking-widest text-[#16A34A]/80">Confidence</span>
+                                <span class="block text-xs font-black">Level: 94%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Graph Mockup -->
+                    <div class="flex items-end justify-center space-x-4 h-56 px-4 mt-auto mb-2 w-full max-w-2xl mx-auto">
+                        <div class="w-10 bg-[#E0E7FF] rounded-t-xl h-[40%] hover:bg-blue-200 transition-colors cursor-pointer"></div>
+                        <div class="w-10 bg-[#E0E7FF] rounded-t-xl h-[55%] hover:bg-blue-200 transition-colors cursor-pointer"></div>
+                        <div class="w-10 bg-[#E0E7FF] rounded-t-xl h-[80%] hover:bg-blue-200 transition-colors cursor-pointer"></div>
+                        
+                        <div class="w-10 bg-[#C7D2FE] rounded-t-xl h-[45%] hover:bg-blue-300 transition-colors cursor-pointer ml-4"></div>
+                        <div class="w-10 bg-[#C7D2FE] rounded-t-xl h-[60%] hover:bg-blue-300 transition-colors cursor-pointer"></div>
+                        <div class="w-10 bg-[#C7D2FE] rounded-t-xl h-[50%] hover:bg-blue-300 transition-colors cursor-pointer relative"></div>
+                        <div class="w-10 bg-[#C7D2FE] rounded-t-xl h-[70%] hover:bg-blue-300 transition-colors cursor-pointer"></div>
+                        
+                        <!-- Forecasted -->
+                        <div class="w-10 bg-[#93C5FD] rounded-t-xl h-[90%] border-t-[3px] border-dashed border-[#2563EB] cursor-pointer ml-4"></div>
+                        <div class="w-10 bg-[#93C5FD] rounded-t-xl h-[100%] border-t-[3px] border-dashed border-[#2563EB] cursor-pointer"></div>
+                    </div>
+                    
+                    <div class="flex justify-between mt-4 text-[9px] font-bold text-gray-400 uppercase tracking-widest w-full max-w-2xl mx-auto px-4">
+                        <span class="text-center w-1/3">AUG 2023</span>
+                        <span class="text-center w-1/3">SEP 2023</span>
+                        <span class="text-center w-1/3 text-blue-500 font-bold">OCT (FORECASTED PROJECTION)</span>
+                    </div>
+                </div>
+
+                <!-- Peak Spending Heatmap -->
+                <div class="col-span-4 bg-[#F8FAFC] rounded-[2rem] p-8 shadow-[0_4px_30px_-10px_rgba(0,0,0,0.03)] border flex flex-col items-center relative text-center">
+                    <div class="w-full flex justify-between items-center mb-6 text-left">
+                        <h3 class="text-lg font-bold text-[#0F172A] leading-tight">Peak<br>Spending</h3>
+                        <div class="w-6 h-6 border border-gray-200 rounded-full flex items-center justify-center text-gray-400">
+                            <i class="fas fa-info text-[10px]"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-7 gap-2 mb-4 w-full max-w-[200px] mt-2">
+                        <!-- Heatmap dots -->
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#C7D2FE]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#93C5FD]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#2563EB] shadow-[0_4px_10px_-2px_rgba(37,99,235,0.5)]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#93C5FD]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#C7D2FE]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#2563EB] shadow-[0_4px_10px_-2px_rgba(37,99,235,0.5)]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#C7D2FE]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#93C5FD]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#93C5FD]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#C7D2FE]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#C7D2FE]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#C7D2FE]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#60A5FA]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#93C5FD]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#93C5FD]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#60A5FA]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#C7D2FE]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#60A5FA]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#60A5FA]"></div>
+                        <div class="w-[22px] h-[22px] rounded-md bg-[#E0E7FF]"></div>
+                    </div>
+                    
+                    <div class="flex justify-between w-full max-w-[200px] text-[8px] font-bold text-gray-400 mb-6 font-mono tracking-wider">
+                        <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+                    </div>
+
+                    <div class="bg-white w-full rounded-2xl p-5 shadow-sm text-left flex items-start space-x-3 text-xs leading-relaxed text-gray-500 relative overflow-hidden mt-2 border border-gray-100/50">
+                        <i class="far fa-lightbulb text-blue-500 mt-0.5 text-sm"></i>
+                        <p class="font-medium">Your most active spending window is <span class="text-blue-500 font-bold">Friday 18:00 - 21:00</span>. These are primarily categorized as <span class="text-[#0F172A] font-bold">"Dining & Social"</span>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRID ROW 2 -->
+            <div class="grid grid-cols-12 gap-8">
+                <!-- Recurring & Bills -->
+                <div class="col-span-5 bg-white rounded-[2rem] p-8 shadow-[0_4px_30px_-10px_rgba(0,0,0,0.03)] border border-gray-50 flex flex-col min-h-full">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="text-lg font-bold leading-tight">Recurring<br>& Bills</h3>
+                        <div class="flex items-center space-x-3 bg-white border border-gray-100 shadow-sm rounded-xl p-1">
+                            <button aria-label="Previous Month" class="w-7 h-7 rounded-lg hover:bg-gray-50 flex items-center justify-center text-gray-400"><i class="fas fa-chevron-left text-[10px]"></i></button>
+                            <span class="text-[9px] font-black uppercase text-[#0F172A] tracking-widest text-center leading-tight px-1">OCT<br>2023</span>
+                            <button aria-label="Next Month" class="w-7 h-7 rounded-lg hover:bg-gray-50 flex items-center justify-center text-gray-400"><i class="fas fa-chevron-right text-[10px]"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 flex-1">
+                        <!-- Bill Items -->
+                        <div class="border border-gray-100 rounded-[1.25rem] p-4 flex justify-between items-center bg-white hover:border-blue-100 hover:shadow-md transition cursor-pointer group">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-[#F0F9FF] flex items-center justify-center text-[#0EA5E9] group-hover:bg-[#E0F2FE] transition">
+                                    <i class="fas fa-cloud text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-[13px] text-[#0F172A] mb-1">AWS Cloud Services</h4>
+                                    <p class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">AUTO PAY ON OCT 14</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-black text-red-500 mb-1">-$240.00</p>
+                                <span class="bg-red-50 text-red-600 text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded border border-red-100 inline-block">Priority</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-100 rounded-[1.25rem] p-4 flex justify-between items-center bg-white hover:border-green-100 hover:shadow-md transition cursor-pointer group">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-[#F0FDF4] flex items-center justify-center text-[#22C55E] group-hover:bg-[#DCFCE7] transition">
+                                    <i class="fas fa-home text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-[13px] text-[#0F172A] mb-1">Mortgage Payment</h4>
+                                    <p class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">DUE OCT 21</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-black text-[#0F172A] mb-1">-$1,850.00</p>
+                                <span class="bg-gray-100 text-gray-500 text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded inline-block">Recurring</span>
+                            </div>
+                        </div>
+
+                        <div class="border border-gray-100 rounded-[1.25rem] p-4 flex justify-between items-center bg-white hover:border-purple-100 hover:shadow-md transition cursor-pointer group">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-[#FAF5FF] flex items-center justify-center text-[#A855F7] group-hover:bg-[#F3E8FF] transition">
+                                    <i class="fas fa-shield-alt text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-[13px] text-[#0F172A] mb-1">Premium Insurance</h4>
+                                    <p class="text-[9px] text-gray-400 font-bold uppercase tracking-widest">DUE OCT 28</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-black text-[#0F172A] mb-1">-$112.50</p>
+                                <span class="bg-gray-100 text-gray-500 text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded inline-block">Monthly</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full py-4 mt-6 border border-dashed border-gray-300 rounded-[1.25rem] text-[10px] font-bold text-gray-400 hover:border-gray-400 hover:text-gray-600 hover:bg-gray-50 transition uppercase tracking-widest">
+                        + Add New Recurring Transaction
+                    </button>
+                </div>
+
+                <!-- Activity Stream -->
+                <div class="col-span-7 bg-white rounded-[2rem] p-8 shadow-[0_4px_30px_-10px_rgba(0,0,0,0.03)] border border-gray-50 relative">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="text-lg font-bold text-[#0F172A]">Activity Stream</h3>
+                        <button class="bg-white border border-gray-100 shadow-sm text-blue-600 px-4 py-2 text-[10px] uppercase tracking-widest font-bold rounded-xl flex items-center space-x-2">
+                            <span>View Detailed Log</span>
+                            <i class="fas fa-external-link-alt"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="relative pl-6 space-y-8 pb-4">
+                        <!-- Connecting Line -->
+                        <div class="absolute left-2.5 top-2 bottom-0 w-[2px] bg-gray-100"></div>
+
+                        <!-- Item 1 -->
+                        <div class="relative">
+                            <div class="absolute -left-[1.6rem] w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center border-4 border-white mt-1 shadow-sm">
+                                <i class="fas fa-check text-[6px] text-white"></i>
+                            </div>
+                            <div class="mb-3">
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">TODAY, 14:22</span>
+                            </div>
+                            <div class="bg-white border border-gray-100 rounded-2xl p-5 flex justify-between shadow-sm">
+                                <div class="flex space-x-5">
+                                    <div class="w-10 h-10 rounded-xl bg-[#F8FAFC] border border-gray-100 flex items-center justify-center">
+                                        <i class="fab fa-github text-[#333] text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-[13.5px] text-[#0F172A] mb-1">GitHub Copilot Subscription</h4>
+                                        <p class="text-[11px] text-gray-400 font-medium">Cloud Infrastructure & Tooling</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="block font-black text-[#0F172A] text-sm mb-1">-$10.00</span>
+                                    <span class="text-[8px] font-black uppercase text-gray-400 tracking-widest">PENDING</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="relative">
+                            <div class="absolute -left-[1.6rem] w-4 h-4 bg-white rounded-full border-[3px] border-gray-200 mt-1"></div>
+                            <div class="mb-3">
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">OCT 11, 09:15</span>
+                            </div>
+                            <div class="bg-white border border-gray-100 rounded-2xl p-5 flex justify-between shadow-sm">
+                                <div class="flex space-x-5">
+                                    <div class="w-10 h-10 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-700">
+                                        <i class="fas fa-gas-pump text-base"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-[13.5px] text-[#0F172A] mb-1">Shell Energy Station</h4>
+                                        <p class="text-[11px] text-gray-400 font-medium">Transport • Location: London, UK</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="block font-black text-[#0F172A] text-sm mb-1">-$85.20</span>
+                                    <span class="text-[8px] font-black uppercase text-[#10B981] tracking-widest">+12 POINTS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="relative">
+                            <div class="absolute -left-[1.6rem] w-4 h-4 bg-white rounded-full border-[3px] border-gray-200 mt-1"></div>
+                            <div class="mb-3">
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest">OCT 10, 13:45</span>
+                            </div>
+                            <!-- Success colored item showing inflow -->
+                            <div class="bg-white border border-[#22C55E]/30 ring-4 ring-[#22C55E]/5 rounded-2xl p-5 flex justify-between shadow-sm relative overflow-hidden">
+                                <div class="flex space-x-5">
+                                    <div class="w-10 h-10 rounded-xl bg-[#F0FDF4] flex items-center justify-center text-[#22C55E]">
+                                        <i class="fas fa-arrow-down shadow-sm"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1 mt-0.5">Client Invoicing:</h4>
+                                        <h4 class="font-black text-[15px] mb-1 text-[#0F172A]">Project Alpha</h4>
+                                        <p class="text-[11px] text-gray-400 font-medium">Incoming • External Wire Transfer</p>
+                                    </div>
+                                </div>
+                                <div class="text-right flex flex-col justify-end pb-1">
+                                    <span class="block font-black text-[#22C55E] text-xl mb-1">+$4,500.00</span>
+                                    <span class="text-[9px] font-black uppercase text-[#22C55E] tracking-widest">CLEARED</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <!-- Floating Action Sub-Menu -->
+    <div class="fixed bottom-10 right-10 z-50">
+        <button aria-label="Lihat Quick Actions" class="w-14 h-14 bg-[#2563EB] text-white rounded-full shadow-[0_10px_25px_-5px_rgba(37,99,235,0.5)] flex items-center justify-center hover:bg-blue-700 hover:scale-[1.05] transition cursor-pointer">
+            <i class="fas fa-chart-line text-xl"></i>
+        </button>
+    </div>
+
+</body>
+</html>

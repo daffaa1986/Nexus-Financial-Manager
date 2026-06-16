@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Finance - Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen overflow-y-auto bg-[#FAF8FF] font-sans text-[#131B2E]">
+
+    <div class="flex min-h-screen">
+        <!-- SIDEBAR -->
+        <aside class="w-72 bg-[#0F172A] text-white flex flex-col p-6 fixed h-full z-10 border-r border-[#1E293B]">
+            <div class="mb-10">
+                <h1 class="text-2xl font-bold tracking-tight">Nexus Finance</h1>
+                <p class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">The Financial Architect by Intelligent System</p>
+            </div>
+
+            <nav class="flex-1 space-y-2 text-gray-400">
+                <a href="index.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-th-large"></i>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <a href="Time-Analysis.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="far fa-clock"></i>
+                    <span>Time Analysis</span>
+                </a>
+                <a href="Category-Manager.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Category Manager</span>
+                </a>
+                <a href="Goals-Budgeting.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Goals & Budgeting</span>
+                </a>
+                <a href="Reports-Export.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="far fa-chart-bar"></i>
+                    <span>Reports & Export</span>
+                </a>
+                <a href="Community-Insight.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-users"></i>
+                    <span>Community & Insight</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto space-y-2 text-gray-400 pt-6 border-t border-slate-800">
+                <a href="Settings.html" class="flex items-center space-x-3 p-3 hover:text-white transition">
+                    <i class="fas fa-cog"></i>
+                    <span class="">Settings</span>
+                </a>
+                <a href="Profile.html" class="flex items-center space-x-3 p-3 rounded-xl bg-[#1E3A8A]/30 text-blue-400 transition">
+                    <i class="far fa-user"></i>
+                    <span class="font-medium">Profile</span>
+                </a>
+            </div>
+            
+            <div class="mt-8 space-y-2 text-gray-400 text-sm">
+                <a href="#" class="flex items-center space-x-3 hover:text-white transition">
+                    <i class="far fa-question-circle"></i>
+                    <span>Help Center</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 hover:text-white transition mt-4">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="flex-1 ml-72 p-10 lg:p-12 overflow-y-auto">
+            
+            <!-- HEADER -->
+            <header class="flex justify-center items-center mb-10 w-full pt-2">
+                <div class="flex justify-between items-center w-full">
+                    <div class="relative w-1/2 max-w-2xl bg-[#F8FAFC]/90 backdrop-blur-md rounded-2xl py-1 px-1 flex shadow-sm border border-slate-200">
+                        <span class="absolute inset-y-0 left-3 flex items-center text-[#94A3B8]">
+                            <i class="fas fa-search text-sm"></i>
+                        </span>
+                        <input type="text" placeholder="Search architectural insights..." aria-label="Search" class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-transparent border-none text-sm text-slate-600 focus:ring-0 outline-none transition placeholder:text-slate-400">
+                    </div>
+
+                    <div class="flex items-center space-x-6">
+                        <div class="relative text-[#64748B] cursor-pointer hover:text-slate-700 transition">
+                            <i class="far fa-bell text-[18px]"></i>
+                            <span class="absolute -top-0.5 -right-0.5 w-[6px] h-[6px] bg-[#BA1A1A] rounded-full"></span>
+                        </div>
+                        <div class="dark-mode-toggle text-[#64748B] cursor-pointer hover:text-slate-700 transition" title="Toggle Dark Mode">
+                            <!-- Toggle icon -->
+                            <div class="w-5 h-5 rounded-full border-2 border-slate-400 flex overflow-hidden">
+                                <div class="w-1/2 h-full bg-slate-400"></div>
+                                <div class="w-1/2 h-full bg-transparent"></div>
+                            </div>
+                        </div>
+                        <button class="bg-[#2563EB] text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-md shadow-blue-200 hover:bg-blue-700 transition tracking-wide">
+                            Upgrade Tier
+                        </button>
+                        <div class="w-9 h-9 rounded-full bg-[#E2E8F0] overflow-hidden cursor-pointer ring-2 ring-white">
+                            <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Avatar" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto">
+                <!-- LEFT COLUMN -->
+                <div class="col-span-1 lg:col-span-8 space-y-8">
+                    
+                    <!-- Profile Card -->
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 relative">
+                        <!-- Avatar -->
+                        <div class="relative shrink-0">
+                            <div class="w-32 h-32 bg-[#FCD3A1] rounded-3xl flex justify-center items-end overflow-hidden border-4 border-white shadow-md">
+                                <img src="https://i.pravatar.cc/200?u=a042581f4e29026704d" alt="Alex Sterling" class="w-full h-full object-cover">
+                            </div>
+                            <div class="absolute -bottom-2 -right-2 bg-[#2563EB] text-white w-7 h-7 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                                <i class="fas fa-check text-[10px]"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Info -->
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h2 class="text-3xl font-black text-[#0F172A] tracking-tight">Alex<br>Sterling</h2>
+                                </div>
+                                <div class="bg-[#E6F4F1] text-[#009668] px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center">
+                                    Architect Tier
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-500 mt-4 leading-relaxed pr-10">
+                                Financial architect focusing on high-growth tech portfolios and diversified real estate trusts. Optimizing for generational wealth.
+                            </p>
+                            
+                            <div class="flex items-center space-x-6 mt-6">
+                                <div class="flex items-center text-xs text-slate-500 font-medium">
+                                    <i class="fas fa-location-dot mr-2"></i>
+                                    San Francisco, CA
+                                </div>
+                                <div class="flex items-center text-xs text-slate-500 font-medium">
+                                    <i class="far fa-calendar-alt mr-2"></i>
+                                    Member since 2021
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Edit Button -->
+                        <div class="absolute right-8 top-8">
+                            <button id="editProfileBtn" class="bg-[#EEF2FF] text-[#2563EB] font-bold text-xs px-5 py-2.5 rounded-xl hover:bg-blue-100 transition">
+                                Edit Profile
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Personal Information -->
+                    <div class="bg-[#F8FAFC]/50 p-8 rounded-[2rem] border border-slate-100">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <i class="far fa-address-card text-[#2563EB] text-lg"></i>
+                            <h3 class="text-lg font-black text-[#0F172A]">Personal Information</h3>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="fullName" class="block text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-2">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" title="Full Name" aria-label="Full Name" value="Alex Sterling" class="w-full bg-white border-transparent px-4 py-3 rounded-xl text-sm font-medium text-slate-800 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm transition">
+                            </div>
+                            <div>
+                                <label for="emailAddress" class="block text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-2">Email Address</label>
+                                <input type="email" id="emailAddress" name="emailAddress" title="Email Address" aria-label="Email Address" value="alex.sterling@nexus.com" class="w-full bg-white border-transparent px-4 py-3 rounded-xl text-sm font-medium text-slate-800 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm transition">
+                            </div>
+                            <div>
+                                <label for="phoneNumber" class="block text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-2">Phone Number</label>
+                                <input type="tel" id="phoneNumber" name="phoneNumber" title="Phone Number" aria-label="Phone Number" value="+1 (555) 234-8901" class="w-full bg-white border-transparent px-4 py-3 rounded-xl text-sm font-medium text-slate-800 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm transition">
+                            </div>
+                            <div>
+                                <label for="timezone" class="block text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-2">Timezone</label>
+                                <div class="relative">
+                                    <select id="timezone" name="timezone" title="Timezone" aria-label="Timezone" class="w-full bg-white border-transparent px-4 py-3 rounded-xl text-sm font-medium text-slate-800 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm transition appearance-none">
+                                        <option value="PT">Pacific Time (PT)</option>
+                                        <option value="ET">Eastern Time (ET)</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs pointer-events-none"></i>
+                                </div>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="architectBio" class="block text-[10px] text-slate-400 font-bold uppercase tracking-widest mb-2">Architect Bio</label>
+                                <textarea id="architectBio" name="architectBio" title="Architect Bio" aria-label="Architect Bio" rows="3" class="w-full bg-white border-transparent px-4 py-3 rounded-xl text-sm font-medium text-slate-800 focus:ring-2 focus:ring-blue-500 outline-none shadow-sm transition resize-none leading-relaxed">Senior investment strategist with 10+ years of experience in market analysis. Using Nexus Finance to streamline multi-institutional asset management.</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Communication Preferences -->
+                    <div class="bg-[#F8FAFC]/50 p-8 rounded-[2rem] border border-slate-100">
+                         <div class="flex items-center space-x-3 mb-8">
+                            <i class="far fa-bell text-[#2563EB] text-lg"></i>
+                            <h3 class="text-lg font-black text-[#0F172A]">Communication Preferences</h3>
+                        </div>
+
+                        <div class="space-y-8">
+                            <!-- Toggle 1 -->
+                            <div class="flex justify-between items-center">
+                                <div class="pr-4">
+                                    <h4 class="font-bold text-sm text-[#0F172A]">Email Notifications</h4>
+                                    <p class="text-xs text-slate-500 mt-1">Receive alerts about suspicious logins and activity.</p>
+                                </div>
+                                <div class="relative inline-block w-12 align-middle select-none shrink-0">
+                                    <input type="checkbox" name="toggle1" id="toggle1" title="Email Notifications" aria-label="Toggle Email Notifications" class="profile-toggle absolute block w-6 h-6 rounded-full bg-white appearance-none cursor-pointer" checked="checked" />
+                                    <label for="toggle1" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                                </div>
+                            </div>
+                            
+                            <!-- Toggle 2 -->
+                            <div class="flex justify-between items-center">
+                                <div class="pr-4">
+                                    <h4 class="font-bold text-sm text-[#0F172A]">Monthly Financial Reports</h4>
+                                    <p class="text-xs text-slate-500 mt-1">A detailed PDF summary of your portfolio architectural health.</p>
+                                </div>
+                                <div class="relative inline-block w-12 align-middle select-none shrink-0">
+                                    <input type="checkbox" name="toggle2" id="toggle2" title="Monthly Reports" aria-label="Toggle Monthly Reports" class="profile-toggle absolute block w-6 h-6 rounded-full bg-white appearance-none cursor-pointer" checked="checked" />
+                                    <label for="toggle2" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                                </div>
+                            </div>
+
+                            <!-- Toggle 3 -->
+                            <div class="flex justify-between items-center">
+                                <div class="pr-4">
+                                    <h4 class="font-bold text-sm text-[#0F172A]">Security & Privacy Alerts</h4>
+                                    <p class="text-xs text-slate-500 mt-1">Instant SMS for any transaction over $5,000.</p>
+                                </div>
+                                <div class="relative inline-block w-12 align-middle select-none shrink-0 mt-1">
+                                    <input type="checkbox" name="toggle3" id="toggle3" title="Security Alerts" aria-label="Toggle Security Alerts" class="profile-toggle absolute block w-6 h-6 rounded-full bg-white appearance-none cursor-pointer" />
+                                    <label for="toggle3" class="toggle-label block overflow-hidden h-6 rounded-full cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security & Danger Zone -->
+                    <div class="bg-[#FEF2F2]/50 p-8 rounded-[2rem] border border-red-50">
+                        <h3 class="text-lg font-black text-[#BA1A1A] mb-2">Security & Danger Zone</h3>
+
+                        <div class="flex justify-between items-start mt-6">
+                            <div>
+                                <h4 class="font-bold text-sm text-[#0F172A]">Deactivate Account</h4>
+                                <p class="text-[11px] text-slate-500 mt-1 mb-1 leading-relaxed max-w-sm">Permanently delete your Nexus Finance data, transaction history, and architectural portfolio insights.</p>
+                                <p class="text-[11px] text-slate-500 max-w-sm">This action cannot be undone.</p>
+                            </div>
+                            <button class="bg-[#FCE8E8] text-[#BA1A1A] font-bold text-xs px-6 py-3 rounded-xl hover:bg-red-100 transition whitespace-nowrap shrink-0">
+                                Terminate Account
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <div class="col-span-1 lg:col-span-4 space-y-8">
+                    
+                    <!-- Current Plan -->
+                    <div class="bg-[#1E293B] p-8 rounded-[2rem] shadow-xl text-white relative overflow-hidden">
+                        <div class="flex justify-between items-center mb-6">
+                            <p class="text-[10px] text-slate-300 uppercase tracking-widest font-bold">Current Plan</p>
+                            <i class="fa-solid fa-wand-magic-sparkles text-[#60A5FA]"></i>
+                        </div>
+                        
+                        <h3 class="text-2xl font-black mb-1">Premium Architect</h3>
+                        <p class="text-xs text-slate-300 mb-8">Full suite access enabled</p>
+
+                        <ul class="space-y-4 mb-10">
+                            <li class="flex items-center text-xs font-medium text-slate-200">
+                                <i class="fa-regular fa-circle-check text-[#10B981] mr-3"></i>
+                                Real-time mutation tracking
+                            </li>
+                            <li class="flex items-center text-xs font-medium text-slate-200">
+                                <i class="fa-regular fa-circle-check text-[#10B981] mr-3"></i>
+                                AI-Powered Portfolio Balancing
+                            </li>
+                        </ul>
+
+                        <div>
+                            <p class="text-[10px] text-slate-400 mb-3">Next Renewal: Oct 12, 2024</p>
+                            <button class="w-full bg-[#334155] hover:bg-[#475569] text-white font-bold text-sm py-3 rounded-xl transition">
+                                Manage Billing
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm">
+                        <div class="flex justify-between items-center mb-8">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-history text-[#2563EB]"></i>
+                                <h3 class="font-black text-[#0F172A] text-lg">Recent Activity</h3>
+                            </div>
+                            <a href="#" class="text-[#2563EB] text-xs font-bold hover:underline">View All</a>
+                        </div>
+
+                        <div class="relative border-l border-slate-100 ml-4 space-y-8">
+                            
+                            <!-- Activity 1 -->
+                            <div class="relative pl-6">
+                                <div class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-[#E6F4F1] flex items-center justify-center border-2 border-white ring-2 ring-transparent">
+                                    <i class="fas fa-sign-in-alt text-[#009668] text-[10px]"></i>
+                                </div>
+                                <h4 class="text-sm font-bold text-[#0F172A]">Successful login</h4>
+                                <p class="text-xs text-slate-500 mt-1">San Francisco, CA • Chrome 118</p>
+                                <p class="text-[10px] text-slate-400 mt-1">2 hours ago</p>
+                            </div>
+
+                            <!-- Activity 2 -->
+                            <div class="relative pl-6">
+                                <div class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-[#EEF2FF] flex items-center justify-center border-2 border-white">
+                                    <i class="fas fa-pen text-[#2563EB] text-[10px]"></i>
+                                </div>
+                                <h4 class="text-sm font-bold text-[#0F172A]">Updated Bio</h4>
+                                <p class="text-xs text-slate-500 mt-1">Profile bio was successfully changed.</p>
+                                <p class="text-[10px] text-slate-400 mt-1">Yesterday, 14:22</p>
+                            </div>
+
+                            <!-- Activity 3 -->
+                            <div class="relative pl-6">
+                                <div class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-emerald-50 flex items-center justify-center border-2 border-white">
+                                    <i class="fas fa-credit-card text-emerald-600 text-[10px]"></i>
+                                </div>
+                                <h4 class="text-sm font-bold text-[#0F172A]">Subscription Renewed</h4>
+                                <p class="text-xs text-slate-500 mt-1">Architect Tier annual plan processed.</p>
+                                <p class="text-[10px] text-slate-400 mt-1">Oct 12, 2023</p>
+                            </div>
+
+                            <!-- Activity 4 -->
+                            <div class="relative pl-6">
+                                <div class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-[#FCE8E8] flex items-center justify-center border-2 border-white">
+                                    <i class="fas fa-shield-alt text-[#BA1A1A] text-[10px]"></i>
+                                </div>
+                                <h4 class="text-sm font-bold text-[#0F172A]">Password Changed</h4>
+                                <p class="text-xs text-slate-500 mt-1">Security credential update performed.</p>
+                                <p class="text-[10px] text-slate-400 mt-1">Oct 05, 2023</p>
+                            </div>
+
+                            <!-- Activity 5 -->
+                            <div class="relative pl-6">
+                                <div class="absolute -left-3 top-0 w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center border-2 border-white">
+                                    <i class="fas fa-laptop text-slate-500 text-[10px]"></i>
+                                </div>
+                                <h4 class="text-sm font-bold text-[#0F172A]">New device paired</h4>
+                                <p class="text-xs text-slate-500 mt-1">iPad Pro 12.9" (Sterling_iPad)</p>
+                                <p class="text-[10px] text-slate-400 mt-1">Sept 28, 2023</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+    </div>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

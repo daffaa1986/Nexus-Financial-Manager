@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Finance - Settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body class="min-h-screen overflow-y-auto bg-[#FAF8FF] font-sans text-[#131B2E]">
+
+    <div class="flex min-h-screen">
+        <!-- SIDEBAR -->
+        <aside class="w-72 bg-[#0F172A] text-white flex flex-col p-6 fixed h-full z-10">
+            <div class="mb-10">
+                <h1 class="text-2xl font-bold tracking-tight">Nexus Finance</h1>
+                <p class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">The Financial Architect by Intelligent System</p>
+            </div>
+
+            <nav class="flex-1 space-y-2 text-gray-400">
+                <a href="index.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-th-large"></i>
+                    <span class="font-medium">Dashboard</span>
+                </a>
+                <a href="Time-Analysis.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="far fa-clock"></i>
+                    <span>Time Analysis</span>
+                </a>
+                <a href="Category-Manager.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Category Manager</span>
+                </a>
+                <a href="Goals-Budgeting.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Goals & Budgeting</span>
+                </a>
+                <a href="Reports-Export.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="far fa-chart-bar"></i>
+                    <span>Reports & Export</span>
+                </a>
+                <a href="Community-Insight.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-slate-800 transition">
+                    <i class="fas fa-users"></i>
+                    <span>Community & Insight</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto space-y-2 text-gray-400 pt-6 border-t border-slate-800">
+                <a href="Settings.html" class="flex items-center space-x-3 p-3 rounded-xl bg-[#1E3A8A]/30 text-blue-400 transition">
+                    <i class="fas fa-cog"></i>
+                    <span class="font-medium">Settings</span>
+                </a>
+                <a href="Profile.html" class="flex items-center space-x-3 p-3 hover:text-white transition">
+                    <i class="far fa-user"></i>
+                    <span class="">Profile</span>
+                </a>
+            </div>
+            
+            <div class="mt-8 space-y-2 text-gray-400 text-sm">
+                <a href="#" class="flex items-center space-x-3 hover:text-white transition">
+                    <i class="far fa-question-circle"></i>
+                    <span>Help Center</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 hover:text-white transition mt-4">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="flex-1 ml-72 p-10 lg:p-12 overflow-y-auto">
+            
+            <div class="mb-10 flex justify-between items-start">
+                <div>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-1">ACCOUNT CONFIGURATION</p>
+                    <h2 class="text-[32px] font-black text-[#0F172A] tracking-tight">System Settings</h2>
+                </div>
+                <!-- Toggle icon -->
+                <div class="dark-mode-toggle mt-2 text-[#64748B] cursor-pointer hover:text-slate-700 transition" title="Toggle Dark Mode">
+                    <div class="w-5 h-5 rounded-full border-2 border-slate-400 flex overflow-hidden">
+                        <div class="w-1/2 h-full bg-slate-400"></div>
+                        <div class="w-1/2 h-full bg-transparent"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
+                <!-- Sub Navbar -->
+                <div class="w-full lg:w-56 flex-shrink-0">
+                    <nav class="space-y-1.5 text-sm font-medium">
+                        <a href="#security" class="block px-5 py-3 bg-[#EEF2FF] text-[#2563EB] rounded-xl font-bold">Security & Auth</a>
+                        <a href="#financial" class="block px-5 py-3 text-gray-500 hover:bg-gray-100 rounded-xl transition">Financial Integrations</a>
+                        <a href="#appearance" class="block px-5 py-3 text-gray-500 hover:bg-gray-100 rounded-xl transition">Appearance</a>
+                        <a href="#data" class="block px-5 py-3 text-gray-500 hover:bg-gray-100 rounded-xl transition">Data Management</a>
+                        <a href="#critical" class="block px-5 py-3 text-[#BA1A1A] hover:bg-red-50 rounded-xl transition mt-2">Critical Actions</a>
+                    </nav>
+                </div>
+                
+                <!-- Content Area -->
+                <div class="flex-1 max-w-3xl space-y-12 pb-16">
+                    
+                    <!-- 1. Security & Authentication -->
+                    <section id="security" class="bg-[#F8F9FE] p-8 rounded-[2rem]">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <i class="fa-solid fa-shield-halved text-[#2563EB] text-xl"></i>
+                            <h3 class="text-lg font-black text-[#0F172A]">Security & Authentication</h3>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <!-- Change Password -->
+                            <div class="bg-white p-5 rounded-2xl flex justify-between items-center shadow-sm">
+                                <div>
+                                    <h4 class="font-bold text-sm text-[#0F172A]">Change Password</h4>
+                                    <p class="text-xs text-gray-500 mt-0.5">Last changed 3 months ago</p>
+                                </div>
+                                <button class="text-[#2563EB] font-bold text-xs px-4 py-2 border border-[#2563EB]/20 rounded-lg hover:bg-blue-50 transition">Update</button>
+                            </div>
+                            
+                            <!-- Two-Factor Authentication -->
+                            <div class="bg-white p-5 rounded-2xl flex justify-between items-center shadow-sm">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-8 h-8 rounded-full bg-[#009668]/10 flex items-center justify-center">
+                                        <i class="fa-solid fa-mobile-screen-button text-[#009668] text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-[#0F172A]">Two-Factor Authentication</h4>
+                                        <p class="text-xs text-gray-500 mt-0.5">Recommended for high-security accounts</p>
+                                    </div>
+                                </div>
+                                <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                                    <input type="checkbox" name="toggle" id="2fa-toggle" title="Toggle 2FA" aria-label="Toggle 2FA" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer" checked/>
+                                    <label for="2fa-toggle" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <h4 class="font-bold text-xs text-[#0F172A] mb-3">Active Sessions</h4>
+                            <div class="bg-white rounded-2xl shadow-sm overflow-hidden">
+                                <!-- Session 1 -->
+                                <div class="p-5 flex justify-between items-center border-b border-gray-50">
+                                    <div class="flex items-center space-x-4">
+                                        <i class="fa-solid fa-laptop text-gray-400 text-lg w-6 text-center"></i>
+                                        <div>
+                                            <h5 class="font-bold text-[13px] text-[#0F172A]">MacBook Pro 14" <span class="text-gray-400 font-normal ml-1">• Jakarta, ID</span></h5>
+                                            <p class="text-[11px] text-[#009668] font-bold mt-0.5">Current Session</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Session 2 -->
+                                <div class="p-5 flex justify-between items-center">
+                                    <div class="flex items-center space-x-4">
+                                        <i class="fa-solid fa-mobile-screen text-gray-400 text-lg w-6 text-center"></i>
+                                        <div>
+                                            <h5 class="font-bold text-[13px] text-[#0F172A]">iPhone 15 Pro <span class="text-gray-400 font-normal ml-1">• Singapore</span></h5>
+                                            <p class="text-[11px] text-gray-500 mt-0.5">Last active 2 hours ago</p>
+                                        </div>
+                                    </div>
+                                    <button class="text-[#BA1A1A] font-bold text-xs hover:underline">Revoke</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 2. Financial Integrations -->
+                    <section id="financial" class="bg-[#F8F9FE] p-8 rounded-[2rem]">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-building-columns text-[#2563EB] text-xl"></i>
+                                <h3 class="text-lg font-black text-[#0F172A]">Financial Integrations</h3>
+                            </div>
+                            <button class="bg-[#EEF2FF] text-[#2563EB] font-bold text-xs px-4 py-2 rounded-lg hover:bg-blue-100 transition flex items-center space-x-2">
+                                <i class="fa-solid fa-plus text-[10px]"></i>
+                                <span>Connect Bank</span>
+                            </button>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-6">Manage secure connections to your financial institutions.</p>
+                        
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <!-- BCA -->
+                            <div class="bg-white p-5 rounded-2xl flex justify-between items-start shadow-sm border border-transparent hover:border-gray-200 transition cursor-pointer">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 rounded-xl bg-[#EEF2FF] text-[#2563EB] flex items-center justify-center font-black text-xs">
+                                        BCA
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-[#0F172A]">Bank Central Asia</h4>
+                                        <p class="text-[11px] text-[#009668] font-bold mt-0.5">Connected • Syncing</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-ellipsis-vertical text-gray-400 cursor-pointer pt-1 hover:text-gray-600"></i>
+                            </div>
+                            <!-- Mandiri -->
+                            <div class="bg-white p-5 rounded-2xl flex justify-between items-start shadow-sm border border-transparent hover:border-gray-200 transition cursor-pointer">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 rounded-xl bg-[#EEF2FF] text-[#2563EB] flex items-center justify-center font-black text-xs">
+                                        MDR
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm text-[#0F172A]">Bank Mandiri</h4>
+                                        <p class="text-[11px] text-[#BA1A1A] font-bold mt-0.5">Re-auth Required</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-ellipsis-vertical text-gray-400 cursor-pointer pt-1 hover:text-gray-600"></i>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#EEF2FF] p-5 rounded-2xl">
+                            <div class="flex justify-between items-center mb-3">
+                                <h4 class="font-bold text-xs text-[#0F172A]">API Keys Management</h4>
+                                <button class="text-[#2563EB] font-bold text-[11px] hover:underline">Generate New Key</button>
+                            </div>
+                            <div class="bg-white rounded-xl p-3 flex justify-between items-center border border-blue-100">
+                                <code class="text-[11px] text-gray-600 font-mono">sk_live_5L922kxXoxxxx...</code>
+                                <i class="fa-regular fa-copy text-gray-400 cursor-pointer hover:text-gray-600"></i>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 3. Appearance & Preferences -->
+                    <section id="appearance" class="bg-[#F8F9FE] p-8 rounded-[2rem]">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <i class="fa-solid fa-palette text-[#2563EB] text-xl"></i>
+                            <h3 class="text-lg font-black text-[#0F172A]">Appearance & Preferences</h3>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-8">
+                            <!-- Color Mode -->
+                            <div>
+                                <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-3">COLOR MODE</p>
+                                <div class="flex space-x-3">
+                                    <!-- Light Mode -->
+                                    <button id="btnLightMode" class="color-mode-btn flex-1 bg-white border-2 border-[#2563EB] rounded-xl p-4 flex flex-col items-center justify-center space-y-2 text-[#2563EB]">
+                                        <i class="fa-regular fa-sun text-xl"></i>
+                                        <span class="text-xs font-bold">Light</span>
+                                    </button>
+                                    <!-- Dark Mode -->
+                                    <button id="btnDarkMode" class="color-mode-btn flex-1 bg-[#E2E8F0] border-2 border-transparent rounded-xl p-4 flex flex-col items-center justify-center space-y-2 text-gray-500 hover:bg-gray-300 transition">
+                                        <i class="fa-regular fa-moon text-xl"></i>
+                                        <span class="text-xs font-bold">Dark</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Dropdowns -->
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-2">PRIMARY CURRENCY</p>
+                                    <div class="relative">
+                                        <select title="Primary Currency" aria-label="Primary Currency" class="w-full bg-white border border-gray-200 text-sm rounded-xl px-4 py-3 appearance-none focus:outline-none focus:border-[#2563EB] font-medium text-[#0F172A]">
+                                            <option>IDR - Indonesian Rupiah (Rp)</option>
+                                            <option>USD - US Dollar ($)</option>
+                                            <option>EUR - Euro (€)</option>
+                                        </select>
+                                        <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-gray-400 uppercase tracking-widest font-bold mb-2">DISPLAY LANGUAGE</p>
+                                    <div class="relative">
+                                        <select title="Display Language" aria-label="Display Language" class="w-full bg-white border border-gray-200 text-sm rounded-xl px-4 py-3 appearance-none focus:outline-none focus:border-[#2563EB] font-medium text-[#0F172A]">
+                                            <option>English (UK)</option>
+                                            <option>Bahasa Indonesia</option>
+                                        </select>
+                                        <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 4. Data Management -->
+                    <section id="data" class="bg-[#F8F9FE] p-8 rounded-[2rem]">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <i class="fa-solid fa-database text-[#2563EB] text-xl"></i>
+                            <h3 class="text-lg font-black text-[#0F172A]">Data Management</h3>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-2xl flex items-start space-x-5 shadow-sm">
+                            <div class="w-12 h-12 rounded-full bg-[#EEF2FF] flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-download text-[#2563EB]"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-[13px] text-[#0F172A]">Export Financial Data</h4>
+                                <p class="text-xs text-gray-500 mt-1 mb-4 leading-relaxed">Download all your transactions, budgets, and goals in CSV or JSON format for external auditing.</p>
+                                <div class="flex space-x-3">
+                                    <button class="bg-[#EEF2FF] text-[#2563EB] font-bold text-xs px-5 py-2 rounded-lg hover:bg-blue-100 transition">Export as CSV</button>
+                                    <button class="bg-[#EEF2FF] text-[#2563EB] font-bold text-xs px-5 py-2 rounded-lg hover:bg-blue-100 transition">Export as JSON</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 5. Critical Actions -->
+                    <section id="critical" class="bg-[#FEF2F2] border border-red-50 p-8 rounded-[2rem]">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <i class="fa-solid fa-triangle-exclamation text-[#BA1A1A] text-xl"></i>
+                            <h3 class="text-lg font-black text-[#BA1A1A]">Critical Actions</h3>
+                        </div>
+                        <p class="text-xs text-gray-600 mb-6">Proceed with caution. These actions are permanent and cannot be reversed.</p>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-transparent hover:border-red-100 transition">
+                                <h4 class="font-bold text-[13px] text-[#0F172A]">Deactivate Account</h4>
+                                <p class="text-[11px] text-gray-500 mt-1 mb-5">Temporarily disable your profile and hide data.</p>
+                                <button class="bg-white border border-[#BA1A1A] text-[#BA1A1A] font-bold text-xs px-5 py-2 rounded-lg hover:bg-red-50 transition">Deactivate</button>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-transparent hover:border-red-100 transition">
+                                <h4 class="font-bold text-[13px] text-[#0F172A]">Delete Account</h4>
+                                <p class="text-[11px] text-gray-500 mt-1 mb-5">Permanently erase all your data and bank links.</p>
+                                <button class="bg-[#BA1A1A] text-white font-bold text-xs px-5 py-2 rounded-lg hover:bg-red-700 transition">Delete Permanently</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Footer -->
+                    <div class="text-center pt-8 pb-4">
+                        <p class="text-[10px] text-gray-400">Nexus Finance Engine v2.4.0 • Updated on Oct 24, 2023</p>
+                    </div>
+
+                </div>
+            </div>
+            
+        </main>
+    </div>
+
+    <!-- Active Navigation scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
