@@ -1,47 +1,416 @@
-Rule menjalankan server python.
+╔══════════════════════════════════════════════════════╗
+║     NEXUS FINANCE AI - PANDUAN MENJALANKAN SERVER   ║
+╚══════════════════════════════════════════════════════╝
 
-🚀 Cara Menyalakan Server Python (FastAPI)
-1. Buka Terminal di VS Code:
-Klik menu Terminal di bagian atas layar, lalu pilih New Terminal (atau tekan `Ctrl + `` di keyboard).
+📋 PERSYARATAN
+   - Python 3.10+
+   - Koneksi internet (untuk download dependencies & Gemini API)
 
-2. Masuk ke "Ruang Mesin" (Folder Backend):
-Di terminal yang baru terbuka, ketik perintah ini lalu tekan Enter:
+⚙️  LANGKAH-LANGKAH
 
-___________________
-## code :
-cd backend
-___________________
+1️⃣  BUKA TERMINAL
+    Buka terminal di folder project ini (nexus-project).
 
-(Pastikan tulisan di sebelah kiri terminalmu sudah berakhiran ...\backend>)
+2️⃣  MASUK KE FOLDER BACKEND
+    ────────────────────────────────────────────────
+    cd backend
+    ────────────────────────────────────────────────
 
-3. Nyalakan Mesinnya!
-Ketik perintah sakti ini lalu tekan Enter:
+3️⃣  INSTALL DEPENDENCIES
+    ────────────────────────────────────────────────
+    pip install -r requirements.txt
+    ────────────────────────────────────────────────
+4️⃣  SET API KEY (Opsional, tapi direkomendasikan)
+    Buat salinan file .env.example menjadi .env:
+    ────────────────────────────────────────────────
+    copy ..\.env.example ..\.env
+    ────────────────────────────────────────────────
+    
+    Lalu buka file .env dan isi:
+    ────────────────────────────────────────────────
+    GEMINI_API_KEY=api_key_kamu_dari_google_ai_studio
+    ────────────────────────────────────────────────
+    
+    ⚠️  Tanpa API Key, sistem tetap jalan tapi:
+        - Kategorisasi hanya berdasarkan aturan lokal (tanpa AI Gemini)
+        - OCR struk tidak bisa pakai Gemini Vision
+        - AI insights fallback ke aturan statistik
+    
+    📌  Cara dapat API Key:
+        1. Buka https://aistudio.google.com/
+        2. Login dengan akun Google
+        3. Klik "Get API Key" → "Create API Key"
+        4. Copy dan paste ke file .env
 
-____________________
-## code :
-python main.py
-____________________
+5️⃣  JALANKAN SERVER
+    ────────────────────────────────────────────────
+    python main.py
+    ────────────────────────────────────────────────
+    
+    Atau alternatif:
+    ────────────────────────────────────────────────
+    uvicorn main:app --reload --host 0.0.0.0 --port 8000
+    ────────────────────────────────────────────────
 
-(Atau alternatifnya jika kode di atas tidak jalan: uvicorn main:app --reload)
+6️⃣  CEK API BERJALAN
+    Buka browser dan akses:
+    ────────────────────────────────────────────────
+    http://localhost:8000/docs
+    ────────────────────────────────────────────────
+    Jika muncul Swagger UI (dokumentasi API), server berhasil!
+
+✅  TANDA SERVER BERHASIL
+    INFO:     Application startup complete.
+    Database aktif & siap!
+    🗄️  Menyalakan Mesin Nexus Finance di Port 8000...
+
+============================================================
+
+📌  CARA MENGGUNAKAN
+
+A. Upload Mutasi Rekening (PDF)
+   1. Buka index.html di browser
+   2. Klik tombol "Upload File"
+   3. Pilih file PDF mutasi rekening
+   4. Tunggu AI memproses:
+      → Ekstrak teks dari PDF
+      → Detect bank (BCA/Mandiri/BRI/BNI/BSI)
+      → Parse transaksi
+      → Kategorisasi otomatis
+      → Simpan ke database
+   5. Dashboard akan update otomatis
+
+B. Upload Struk Belanjaan (Foto)
+   1. Buka index.html di browser
+   2. Klik tombol "Upload File"
+   3. Pilih foto struk (.jpg/.png/.webp)
+   4. Tunggu AI memproses:
+      → OCR scan struk (via Gemini Vision)
+      → Extract nama toko, item, total
+      → Kategorisasi belanja
+      → Simpan ke database
+
+C. Melihat AI Insights
+   - Dashboard akan menampilkan:
+     • Deteksi "Bocor" (pengeluaran kecil sering)
+     • Deteksi "Boros" (pengeluaran besar tidak wajar)
+     • Analisis pola harian
+     • Ringkasan keuangan
+
+============================================================
+
+🔌  API ENDPOINTS (Semua via http://localhost:8000)
+
+   POST  /api/upload              Upload file (PDF mutasi / foto struk)
+   POST  /api/upload-receipt      Upload khusus struk (OCR)
+   GET   /api/transactions        Semua transaksi
+   GET   /api/transactions/month/{bulan}/{tahun}   Per bulan
+   GET   /api/receipts            Semua data struk
+   GET   /api/insights            AI Insights pola pengeluaran
+   GET   /api/comparison          Perbandingan bulan ini vs bulan lalu
+   GET   /api/summary             Ringkasan keuangan
+   GET   /api/analytics/daily     Analisis harian
+   GET   /api/goals               Goals keuangan
+   POST  /api/goals               Buat goal
+   GET   /api/budgets             Budget per bulan
+   POST  /api/budgets             Set budget
+   GET   /api/bank-detect         Detect bank dari file PDF
+
+============================================================
+
+📁  STRUKTUR BACKEND
+
+   backend/
+   ├── main.py              Server FastAPI + semua endpoint
+   ├── ai_engine.py         AI parser mutasi rekening (multi-bank)
+   ├── ocr_engine.py        OCR struk belanjaan (Gemini Vision)
+   ├── receipt_parser.py    Parse & normalisasi data struk
+   ├── spending_analyzer.py Analisis bocor/boros + AI insights
+   ├── db_config.py         Database SQLite (transaksi, struk, goals, budgets)
+   ├── requirements.txt     Daftar dependencies Python
+   └── nexus_finance.db     File database (otomatis dibuat)
+
+============================================================
+
+🌐  FRONTEND (Web Desktop)
+
+   Buka file index.html langsung di browser:
+   ────────────────────────────────────────────────
+   D:\\projectweb\\project web AI-ML Management System\\Web AI Manegement System\\nexus-project\\index.html
+   ────────────────────────────────────────────────
+
+⚙️  KONFIGURASI LANJUTAN
+
+   Untuk mengubah host/port server:
+   1. Buka .env
+   2. Ubah nilai:
+      HOST=0.0.0.0
+      PORT=8000
+   3. Restart server
+
+============================================================
+
+🚀  VERSI MOBILE
+
+   Web Mobile:
+   - Sudah responsive via Tailwind CSS
+   - Buka di browser HP langsung (gunakan IP lokal)
+
+   Mobile App (React Native / Flutter):
+   - Backend API sudah siap (REST + WebSocket)
+   - Tinggal buat frontend mobile yang consume API yang sama
+
+============================================================
+
+⚛️  REACT FRONTEND (frontend/react/)
+
+   Prasyarat: Node.js 18+
+
+   Cara menjalankan:
+   ────────────────────────────────────────────────
+   cd frontend/react
+   npm install
+   npm run dev
+   ────────────────────────────────────────────────
+   Buka di browser: http://localhost:5173
+   
+   Fitur:
+   - React 18 + Vite + React Router
+   - Chart.js untuk grafik
+   - Axios untuk API calls
+   - Proxy otomatis ke backend Python (port 8000)
+   - Auto-deploy: npm run build → deploy folder dist/
+
+============================================================
+
+💚  VUE.JS FRONTEND (frontend/vue/)
+
+   Prasyarat: Node.js 18+
+
+   Cara menjalankan:
+   ────────────────────────────────────────────────
+   cd frontend/vue
+   npm install
+   npm run dev
+   ────────────────────────────────────────────────
+   Buka di browser: http://localhost:5174
+
+   Fitur:
+   - Vue 3 + Vite + Vue Router
+   - Chart.js untuk grafik
+   - Composition + Options API
+   - Proxy otomatis ke backend Python
+   - Auto-deploy: npm run build → deploy folder dist/
+
+============================================================
+
+🐘  LARAVEL BACKEND (backend-laravel/)
+
+   Prasyarat: PHP 8.1+, Composer, MySQL/PostgreSQL
+
+   Cara menjalankan:
+   ────────────────────────────────────────────────
+   cd backend-laravel
+   composer install
+   cp .env.example .env          # Konfigurasi database
+   php artisan key:generate
+   php artisan migrate            # Buat tabel database
+   php artisan serve              # http://localhost:8000
+   ────────────────────────────────────────────────
+
+   Struktur:
+   ├── routes/api.php             Semua endpoint API
+   ├── app/Models/                Transaction, Receipt, Goal, Budget
+   ├── app/Http/Controllers/Api/  Transaction, Insight, Receipt
+   └── database/migrations/       SQL migration files
+
+   Fitur:
+   - Full REST API (mirror Python endpoints)
+   - Eloquent ORM untuk database
+   - Migration system untuk schema management
+   - Sanctum untuk API authentication
+   - Siap di-deploy ke Laravel Forge / Vapor
+
+============================================================
+
+🗄️  DATABASE SQL (MySQL / PostgreSQL)
+
+   Backend Python mendukung 3 database:
+   ┌──────────┬──────────────┬─────────────────────────────┐
+   │ Database │ File Config   │ Cara Install Driver         │
+   ├──────────┼──────────────┼─────────────────────────────┤
+   │ SQLite   │ db_config.py │ Built-in (default)          │
+   │ MySQL    │ db_mysql.py  │ pip install pymysql          │
+   │ Postgres │ db_postgres  │ pip install psycopg2-binary │
+   └──────────┴──────────────┴─────────────────────────────┘
+
+   Cara mengganti database:
+   1. Buka .env
+   2. Set DB_TYPE=mysql atau DB_TYPE=postgresql
+   3. Isi credentials database
+   4. Jalankan: python -c "from db_mysql import init_mysql_db; init_mysql_db()"
+
+============================================================
+
+📁  STRUKTUR FOLDER LENGKAP
+
+   nexus-project/
+   │
+   ├── backend/                   Python FastAPI (default)
+   │   ├── main.py                Server + API endpoints
+   │   ├── ai_engine.py           AI parser mutasi (multi-bank)
+   │   ├── ocr_engine.py          OCR struk (Gemini Vision)
+   │   ├── receipt_parser.py      Parse data struk
+   │   ├── spending_analyzer.py   Deteksi bocor/boros
+   │   ├── db_config.py           SQLite database
+   │   ├── db_mysql.py            MySQL database
+   │   ├── db_postgres.py         PostgreSQL database
+   │   └── requirements.txt       Python dependencies
+   │
+   ├── frontend/                  Frontend frameworks
+   │   ├── react/                 React + Vite app
+   │   └── vue/                   Vue 3 + Vite app
+   │
+   ├── backend-laravel/           Laravel PHP backend
+   │   ├── app/                   Models + Controllers
+   │   ├── database/migrations/   SQL migrations
+   │   └── routes/api.php         API routes
+   │
+   ├── index.html                 Frontend HTML (existing)
+   ├── js/                        JavaScript (existing)
+   └── css/                       Stylesheets (existing)
+
+============================================================
+
+🎯  PILIHAN TEKNOLOGI - Pilih Salah Satu
+
+   ┌─────────────────────────────────────────────────────────┐
+   │ BACKEND:                                                  │
+   │   • Python FastAPI (existing - recommended)             │
+   │   • Laravel PHP (scaffold available)                    │
+   ├─────────────────────────────────────────────────────────┤
+   │ FRONTEND:                                                │
+   │   • HTML/CSS/JS (existing)                              │
+   │   • React (frontend/react/)                             │
+   │   • Vue.js (frontend/vue/)                              │
+   ├─────────────────────────────────────────────────────────┤
+   │ DATABASE:                                                │
+   │   • SQLite (existing - default)                         │
+   │   • MySQL (backend/db_mysql.py)                         │
+   │   • PostgreSQL (backend/db_postgres.py)                 │
+   └─────────────────────────────────────────────────────────┘
+
+   Semua pilihan bisa dipakai bersama-sama karena:
+   - API endpoints konsisten (sama)
+   - Database schema identik
+   - Frontend consume API yang sama
+
+============================================================
+
+🧠  STRUKTUR AI/ML SYSTEM (ai-ml/)
+
+   ai-ml/
+   ├── __init__.py                 Package initializer
+   ├── config.py                   Semua konfigurasi (API key, threshold, kategori)
+   │
+   ├── data/                       Data Processing
+   │   ├── parser_mutasi.py        Baca PDF mutasi + extract transaksi (multi-bank)
+   │   └── cleaner.py              NLP bersihkan teks transaksi
+   │
+   ├── models/                     ML Classification
+   │   └── classifier.py           Kategorisasi transaksi (rules + Gemini LLM)
+   │
+   ├── analysis/                   Analisis Keuangan
+   │   ├── bocor_detector.py       Deteksi bocor (transaksi kecil-sering)
+   │   ├── boros_detector.py       Deteksi boros (kategori terbesar)
+   │   ├── pola_analyzer.py        Analisis pola harian
+   │   ├── insight_engine.py       Generate semua insight + LLM analysis
+   │   └── comparison.py           Perbandingan bulanan + statistik
+   │
+   ├── ocr/                        OCR System
+   │   ├── gemini_vision.py        OCR struk pake Gemini Vision
+   │   └── receipt_normalizer.py   Parse + normalisasi data struk
+   │
+   └── utils/                      Utilities
+       ├── bank_detector.py        Auto-detect bank dari teks
+       └── helpers.py              Fungsi bantu (format rupiah, parse tanggal)
+
+   ▶️  Cara pakai di kode:
+      from ai_ml.data.parser_mutasi import proses_dokumen_mutasi
+      from ai_ml.analysis.insight_engine import generate_analysis
+      from ai_ml.ocr.gemini_vision import ocr_struk
 
 
-✅ Tanda Kalau Sudah Berhasil:
-Jika di terminalmu muncul tulisan berwarna hijau seperti:
+V2.0
+Update Rules
 
-INFO: Application startup complete.
-🚀 Menyalakan Mesin Nexus Finance di Port 8000...
+╔══════════════════════════════════════════════════════╗
+║   NEXUS FINANCE AI - PANDUAN MENJALANKAN SERVER V2.0 ║
+╚══════════════════════════════════════════════════════╝
 
-Berarti servermu sudah resmi menyala dan "Antigravity" siap bekerja!
+📋 PERSYARATAN
+   - Python 3.10+
+   - Koneksi internet (untuk download dependencies & Gemini API)
 
-Langkah Selanjutnya:
-Kembali ke browser kamu (di halaman Dashboard).
+⚙️  LANGKAH-LANGKAH
 
-Klik OK pada pop-up error tersebut.
+1️⃣  BUKA TERMINAL
+    Buka terminal di folder project ini (nexus-project).
 
-Refresh (Tekan F5) halaman web-mu.
+2️⃣  MASUK KE FOLDER BACKEND PYTHON
+    ────────────────────────────────────────────────
+    cd backend-python
+    ────────────────────────────────────────────────    
+    ⚠️ PENTING: Jangan masuk ke folder 'backend' biasa, karena program API utama sudah dipindahkan ke 'backend-python'.
 
-Coba klik Upload Mutasi sekali lagi.
+3️⃣  INSTALL DEPENDENCIES
+    ────────────────────────────────────────────────
+    pip install -r requirements.txt
+    ────────────────────────────────────────────────
 
-Perhatikan keajaibannya: Radar Chart-nya akan langsung mekar dan angka saldo di kiri atas akan langsung berubah dari $2,482,190 menjadi total rupiah yang sebenarnya!
+4️⃣  SET API KEY (Opsional, tapi direkomendasikan)
+    Buat salinan file .env.example menjadi .env:
+    ────────────────────────────────────────────────
+    copy .env.example .env
+    ────────────────────────────────────────────────
+    (Ini akan membuat salinan .env di dalam folder backend-python)
+    
+    Lalu buka file .env dan isi:
+    ────────────────────────────────────────────────
+    GEMINI_API_KEY=api_key_kamu_dari_google_ai_studio
+    ────────────────────────────────────────────────
+    
+    ⚠️  Tanpa API Key, sistem tetap jalan tapi:
+        - Kategorisasi hanya berdasarkan aturan lokal (tanpa AI Gemini)
+        - OCR struk tidak bisa pakai Gemini Vision
+        - AI insights fallback ke aturan statistik
+    
+    📌  Cara dapat API Key:
+        1. Buka https://aistudio.google.com/
+        2. Login dengan akun Google
+        3. Klik "Get API Key" → "Create API Key"
+        4. Copy dan paste ke file .env
 
-Ayo nyalakan servernya sekarang, Daffa, dan beri tahu saya kalau grafiknya sudah berhasil menari! 🔥
+5️⃣  JALANKAN SERVER
+    ────────────────────────────────────────────────
+    python main.py
+    ────────────────────────────────────────────────
+    
+    Atau alternatif:
+    ────────────────────────────────────────────────
+    uvicorn main:app --reload --host 0.0.0.0 --port 8000
+    ────────────────────────────────────────────────
+
+6️⃣  CEK API BERJALAN
+    Buka browser dan akses:
+    ────────────────────────────────────────────────
+    http://localhost:8000/docs
+    ────────────────────────────────────────────────
+    Jika muncul Swagger UI (dokumentasi API), server berhasil!
+
+✅  TANDA SERVER BERHASIL
+    INFO:     Application startup complete.
+    Database aktif & siap!
+    🗄️  Menyalakan Mesin Nexus Finance di Port 8000...
+
+============================================================

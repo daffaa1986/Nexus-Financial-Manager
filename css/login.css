@@ -1,0 +1,40 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+/* Custom Glassmorphism styles */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+.glass-card-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-card-hover:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+/* Keyframe Floating animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+@keyframes float-delay {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(10px); }
+}
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+.animate-float-delay {
+    animation: float-delay 6s ease-in-out infinite;
+    animation-delay: 2.5s;
+}
+/* Focus styles for inputs */
+.input-focus-glow:focus-within {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    border-color: #2563EB;
+}

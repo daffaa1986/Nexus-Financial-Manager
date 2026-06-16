@@ -1,8 +1,9 @@
+const API_BASE = "http://127.0.0.1:8000";
+
 document.addEventListener('DOMContentLoaded', function () {
-    // ==========================================
-    // 1. INISIALISASI GRAFIK KOSONG (Menunggu Data)
-    // ==========================================
     let expenseRadarChart;
+    let expenseBarChart;
+    let trendLineChart;
 
     const radarElement = document.getElementById('radarChart');
     if (radarElement) {
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         expenseRadarChart = new Chart(radarCtx, {
             type: 'radar',
             data: {
-                labels: ['Menunggu Data...'], // Akan diganti oleh AI
+                labels: ['Menunggu Data...'],
                 datasets: [{
                     label: 'Pengeluaran (Rp)',
                     data: [0],
@@ -36,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // 2. MIXED CHART - Balance Momentum
     const balanceElement = document.getElementById('balanceChart');
     if (balanceElement) {
         const balanceCtx = balanceElement.getContext('2d');
@@ -75,33 +75,22 @@ document.addEventListener('DOMContentLoaded', function () {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
-                },
+                plugins: { legend: { display: false } },
                 scales: {
-                    y: {
-                        display: false,
-                        beginAtZero: true
-                    },
+                    y: { display: false, beginAtZero: true },
                     x: {
                         grid: { display: false },
                         border: { display: false },
-                        ticks: {
-                            color: '#94A3B8',
-                            font: { size: 9, weight: 'bold' }
-                        }
+                        ticks: { color: '#94A3B8', font: { size: 9, weight: 'bold' } }
                     }
                 }
             }
         });
     }
 
-    // js untuk time-analysis
     const timeElement = document.getElementById('timeBarChart');
     if (timeElement) {
         const ctx = timeElement.getContext('2d');
-
-        // Meniru gaya bar chart di desain SVG (Rounded & Light Blue)
         new Chart(ctx, {
             type: 'bar',
             data: {
@@ -109,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 datasets: [{
                     label: 'Process Time (ms)',
                     data: [120, 190, 150, 250, 180, 210, 320, 240, 170, 200],
-                    backgroundColor: '#DAE2FD', // Warna biru muda sesuai SVG
+                    backgroundColor: '#DAE2FD',
                     hoverBackgroundColor: '#497CFF',
                     borderRadius: 10,
                     borderSkipped: false,
@@ -118,25 +107,16 @@ document.addEventListener('DOMContentLoaded', function () {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
-                },
+                plugins: { legend: { display: false } },
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { display: true, color: 'rgba(200, 200, 200, 0.1)' },
-                        border: { display: false }
-                    },
-                    x: {
-                        grid: { display: false },
-                        border: { display: false }
-                    }
+                    y: { beginAtZero: true, grid: { color: 'rgba(200, 200, 200, 0.1)' }, border: { display: false } },
+                    x: { grid: { display: false }, border: { display: false } }
                 }
             }
         });
     }
 
-    // js untuk category manager
+    // CATEGORY MANAGER
     const cards = document.querySelectorAll('.category-card');
     const inputName = document.getElementById('input-name');
     const inputBudget = document.getElementById('input-budget');
@@ -147,20 +127,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateSelectionColors(color) {
         const previewIcon = document.querySelector('.preview-icon');
         if (!previewIcon) return;
-        const colorMap = {
-            blue: '#EFF6FF',
-            red: '#FEF2F2',
-            green: '#ECFDF5',
-            purple: '#FAF5FF',
-            orange: '#FFF7ED'
-        };
-        const textMap = {
-            blue: '#2563EB',
-            red: '#B91C1C',
-            green: '#047857',
-            purple: '#7C3AED',
-            orange: '#EA580C'
-        };
+        const colorMap = { blue: '#EFF6FF', red: '#FEF2F2', green: '#ECFDF5', purple: '#FAF5FF', orange: '#FFF7ED' };
+        const textMap = { blue: '#2563EB', red: '#B91C1C', green: '#047857', purple: '#7C3AED', orange: '#EA580C' };
         previewIcon.style.backgroundColor = colorMap[color] || '#EFF6FF';
         previewIcon.style.color = textMap[color] || '#2563EB';
     }
@@ -176,17 +144,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function setActiveCard(card) {
         cards.forEach(c => c.classList.remove('active'));
         card.classList.add('active');
-
         const name = card.dataset.name;
         const limit = card.dataset.limit;
         const color = card.dataset.color;
         const iconElement = card.querySelector('.icon-box svg use');
         const iconHref = iconElement ? iconElement.getAttribute('href') : '';
-
         if(inputName) inputName.value = name;
         if(previewTitle) previewTitle.innerText = name;
         if(inputBudget) inputBudget.value = parseFloat(limit).toLocaleString('en-US', { minimumFractionDigits: 2 });
-
         const previewIconElement = document.querySelector('.preview-icon svg use');
         if(previewIconElement && iconHref) previewIconElement.setAttribute('href', iconHref);
         updateSelectionColors(color);
@@ -194,29 +159,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (cards.length > 0) {
-        cards.forEach(card => {
-            card.addEventListener('click', () => setActiveCard(card));
-        });
-
+        cards.forEach(card => card.addEventListener('click', () => setActiveCard(card)));
         const activeCard = document.querySelector('.category-card.active');
         if (activeCard) setActiveCard(activeCard);
     }
 
-    if (inputName) {
-        inputName.addEventListener('input', (e) => {
-            if(previewTitle) previewTitle.innerText = e.target.value;
-            const activeCardTitle = document.querySelector('.category-card.active h4');
-            if (activeCardTitle) activeCardTitle.innerText = e.target.value;
-        });
-    }
+    if (inputName) inputName.addEventListener('input', (e) => {
+        if(previewTitle) previewTitle.innerText = e.target.value;
+        const activeCardTitle = document.querySelector('.category-card.active h4');
+        if (activeCardTitle) activeCardTitle.innerText = e.target.value;
+    });
 
-    if (inputBudget) {
-        inputBudget.addEventListener('blur', (e) => {
-            const value = e.target.value.replace(/[^0-9.]/g, '');
-            if (!value) return;
-            e.target.value = parseFloat(value).toLocaleString('en-US', { minimumFractionDigits: 2 });
-        });
-    }
+    if (inputBudget) inputBudget.addEventListener('blur', (e) => {
+        const value = e.target.value.replace(/[^0-9.]/g, '');
+        if (!value) return;
+        e.target.value = parseFloat(value).toLocaleString('en-US', { minimumFractionDigits: 2 });
+    });
 
     if (colorOptions.length > 0) {
         colorOptions.forEach(opt => {
@@ -242,91 +200,131 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // js untuk settings
-    // Add smooth scrolling for sub-nav links
+    // SETTINGS
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
     });
-    
-    // Sub-nav active state toggling
+
     const navLinks = document.querySelectorAll('nav a[href^="#"]');
     const sections = document.querySelectorAll('main section');
-
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            // Adjusted margin logic for when you scroll
-            if (scrollY >= (sectionTop - sectionHeight / 3)) {
-                current = section.getAttribute('id');
-            }
+            if (scrollY >= (sectionTop - sectionHeight / 3)) current = section.getAttribute('id');
         });
-
         navLinks.forEach(link => {
-            // Reset all classes
             link.classList.remove('bg-[#EEF2FF]', 'text-[#2563EB]', 'font-bold', 'bg-red-50');
-            if (link.getAttribute('href') !== '#critical') {
-                link.classList.add('text-gray-500');
-            } else {
-                link.classList.add('text-[#BA1A1A]');
-            }
-            
-            // Add active class if matched
+            if (link.getAttribute('href') !== '#critical') link.classList.add('text-gray-500');
+            else link.classList.add('text-[#BA1A1A]');
             if (link.getAttribute('href') === `#${current}`) {
-                if (current === 'critical') {
-                    link.classList.add('bg-red-50', 'font-bold');
-                } else {
-                    link.classList.remove('text-gray-500');
-                    link.classList.add('bg-[#EEF2FF]', 'text-[#2563EB]', 'font-bold');
-                }
+                if (current === 'critical') link.classList.add('bg-red-50', 'font-bold');
+                else { link.classList.remove('text-gray-500'); link.classList.add('bg-[#EEF2FF]', 'text-[#2563EB]', 'font-bold'); }
             }
         });
     }, { passive: true });
 
     // ==========================================
-    // 2. MENGAMBIL DATA & MENGGERAKKAN DASHBOARD
+    // AI INSIGHTS DISPLAY
+    // ==========================================
+    function createInsightCard(insight) {
+        const colors = {
+            bocor: { bg: 'bg-red-50', border: 'border-red-200', icon: 'fas fa-exclamation-triangle', iconColor: 'text-red-500', badge: 'bg-red-100 text-red-700' },
+            boros: { bg: 'bg-orange-50', border: 'border-orange-200', icon: 'fas fa-fire', iconColor: 'text-orange-500', badge: 'bg-orange-100 text-orange-700' },
+            tip: { bg: 'bg-blue-50', border: 'border-blue-200', icon: 'fas fa-lightbulb', iconColor: 'text-blue-500', badge: 'bg-blue-100 text-blue-700' },
+            good: { bg: 'bg-green-50', border: 'border-green-200', icon: 'fas fa-check-circle', iconColor: 'text-green-500', badge: 'bg-green-100 text-green-700' },
+        };
+        const sevColors = { high: 'border-l-red-500', medium: 'border-l-yellow-500', low: 'border-l-green-500' };
+        const c = colors[insight.type] || colors.tip;
+        const sev = sevColors[insight.severity] || 'border-l-gray-300';
+
+        return `
+            <div class="p-4 ${c.bg} border ${c.border} border-l-4 ${sev} rounded-xl mb-3">
+                <div class="flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${c.bg}">
+                        <i class="${c.icon} ${c.iconColor} text-sm"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center space-x-2 mb-1">
+                            <h4 class="font-bold text-sm">${insight.title}</h4>
+                            <span class="text-[9px] px-2 py-0.5 rounded-full font-bold ${c.badge}">${insight.type.toUpperCase()}</span>
+                        </div>
+                        <p class="text-xs text-gray-600">${insight.description}</p>
+                        ${insight.amount ? `<p class="text-xs font-bold text-gray-700 mt-1">Rp ${insight.amount.toLocaleString('id-ID')}</p>` : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    async function muatAIInsights() {
+        const container = document.getElementById('aiInsightsContainer');
+        if (!container) return;
+
+        try {
+            const now = new Date();
+            const bulan = now.getMonth() + 1;
+            const tahun = now.getFullYear();
+            const response = await fetch(`${API_BASE}/api/insights?bulan=${bulan}&tahun=${tahun}`);
+            const result = await response.json();
+
+            if (result.status === 'success' && result.data) {
+                const data = result.data;
+
+                if (data.summary) {
+                    const summaryEl = document.getElementById('aiSummaryText');
+                    if (summaryEl) summaryEl.innerHTML = data.summary.replace(/\n/g, '<br>');
+                }
+
+                if (data.insights && data.insights.length > 0) {
+                    container.innerHTML = data.insights.map(createInsightCard).join('');
+                } else {
+                    container.innerHTML = `
+                        <div class="p-6 text-center text-gray-400">
+                            <i class="fas fa-check-circle text-3xl mb-3 text-green-400"></i>
+                            <p class="font-bold text-green-600">Keuangan Anda dalam kondisi baik!</p>
+                            <p class="text-xs mt-1">Upload mutasi untuk analisis lebih lanjut.</p>
+                        </div>
+                    `;
+                }
+            }
+        } catch (error) {
+            console.error("Gagal memuat AI insights:", error);
+        }
+    }
+
+    // ==========================================
+    // LOAD TRANSACTIONS & UPDATE DASHBOARD
     // ==========================================
     async function muatDataDariDatabase() {
         try {
-            const response = await fetch("http://127.0.0.1:8000/api/transactions");
+            const response = await fetch(`${API_BASE}/api/transactions`);
             const result = await response.json();
 
             if (result.status === "success" && result.data.length > 0) {
-                // Variabel untuk menghitung uang
                 let totalIncome = 0;
                 let totalExpense = 0;
-                let categorySums = {}; // Untuk menyimpan total per kategori (Radar Chart)
+                let categorySums = {};
 
                 const tableBody = document.querySelector('table tbody');
-                if (tableBody) tableBody.innerHTML = ''; 
+                if (tableBody) tableBody.innerHTML = '';
 
                 result.data.forEach(trx => {
-                    // MENGHITUNG TOTAL UANG
                     let type = trx.type;
-                    if (!type) {
-                        type = trx.category === 'Income' ? 'CR' : 'DB';
-                    }
+                    if (!type) type = trx.category === 'Income' ? 'CR' : 'DB';
 
-                    if (type === 'CR') {
-                        totalIncome += trx.amount;
-                    } else if (type === 'DB') {
+                    if (type === 'CR') totalIncome += trx.amount;
+                    else if (type === 'DB') {
                         totalExpense += trx.amount;
-                        // Menjumlahkan pengeluaran berdasarkan Kategori dari AI Gemini
                         let cat = trx.category || "Lainnya";
-                        // Jangan tambahkan Income ke pengeluaran
-                        if(cat !== 'Income') {
-                            categorySums[cat] = (categorySums[cat] || 0) + trx.amount;
-                        }
+                        if (cat !== 'Income') categorySums[cat] = (categorySums[cat] || 0) + trx.amount;
                     }
 
-                    // MENGISI TABEL (Sama seperti sebelumnya)
                     if (tableBody) {
                         const newRow = document.createElement('tr');
                         newRow.className = "border-b border-gray-50 group hover:bg-slate-50 transition";
@@ -334,41 +332,37 @@ document.addEventListener('DOMContentLoaded', function () {
                         const isExpense = type === 'DB';
                         const colorClass = isExpense ? 'text-red-500' : 'text-green-500';
                         const sign = isExpense ? '-' : '+';
+                        const sourceBadge = trx.source === 'mutation'
+                            ? '<span class="bg-blue-50 text-blue-600 text-[9px] px-2 py-1 rounded-md uppercase font-black shadow-sm">AI Mutasi</span>'
+                            : '<span class="bg-purple-50 text-purple-600 text-[9px] px-2 py-1 rounded-md uppercase font-black shadow-sm">OCR Struk</span>';
 
                         newRow.innerHTML = `
                             <td class="py-4 px-2 font-bold">${trx.date}</td>
                             <td class="py-4 px-2 text-gray-800 font-bold">${trx.label}</td>
                             <td class="py-4 px-2 text-gray-500">${trx.category}</td>
                             <td class="py-4 px-2 font-bold text-right ${colorClass}">${sign}${formattedAmount}</td>
-                            <td class="py-4 px-2 text-right"><span class="bg-blue-50 text-blue-600 text-[9px] px-2 py-1 rounded-md uppercase font-black shadow-sm">AI Scanned</span></td>
+                            <td class="py-4 px-2 text-right">${sourceBadge}</td>
                         `;
                         tableBody.appendChild(newRow);
                     }
                 });
 
-                // ==========================================
-                // 3. MENYUNTIKKAN HASIL HITUNGAN KE HTML & GRAFIK
-                // ==========================================
-                
-                // Update Kotak Angka (Cari elemen berdasarkan teks HTML-nya)
                 const incomeBox = document.querySelector('.bg-green-50')?.parentElement?.querySelector('h4');
                 const expenseBox = document.querySelector('.bg-red-50')?.parentElement?.querySelector('h4');
                 const mainBalanceBox = document.querySelector('h3.text-5xl.font-black');
 
-                // Jika elemen tidak ditemukan (misal di hal lain), lewati
                 if (incomeBox) incomeBox.innerHTML = `Rp ${totalIncome.toLocaleString('id-ID')}`;
                 if (expenseBox) expenseBox.innerHTML = `Rp ${totalExpense.toLocaleString('id-ID')}`;
-                
+
                 let sisaSaldo = totalIncome - totalExpense;
                 if (mainBalanceBox) {
                     mainBalanceBox.innerHTML = `Rp ${sisaSaldo.toLocaleString('id-ID')} <span class="text-2xl text-gray-400 font-medium">.00</span>`;
                 }
 
-                // Update Radar Chart Expense Architecture
                 if (expenseRadarChart && Object.keys(categorySums).length > 0) {
-                    expenseRadarChart.data.labels = Object.keys(categorySums); // Label Kategori dari Gemini
-                    expenseRadarChart.data.datasets[0].data = Object.values(categorySums); // Nominal Uangnya
-                    expenseRadarChart.update(); // Perintahkan Chart.js untuk menggambar ulang!
+                    expenseRadarChart.data.labels = Object.keys(categorySums);
+                    expenseRadarChart.data.datasets[0].data = Object.values(categorySums);
+                    expenseRadarChart.update();
                 }
             }
         } catch (error) {
@@ -377,56 +371,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     muatDataDariDatabase();
+    muatAIInsights();
+
 
     // ==========================================
-    // 4. KONEKSI WEBSOCKET (UPLOAD FILE)
-    // ==========================================
-    const socket = new WebSocket("ws://127.0.0.1:8000/ws/updates");
-    
-    socket.onmessage = function(event) {
-        const response = JSON.parse(event.data);
-        const uploadBtn = document.getElementById('fileUpload') ? document.getElementById('fileUpload').previousElementSibling : null;
-
-        if (response.status === "loading") {
-            if (uploadBtn) {
-                uploadBtn.innerHTML = `<i class="fas fa-spinner fa-spin text-sm"></i><span>${response.message}</span>`;
-                uploadBtn.classList.add('opacity-80', 'cursor-not-allowed');
-            }
-        } else if (response.status === "success") {
-            if (uploadBtn) {
-                uploadBtn.innerHTML = `<i class="fas fa-plus-circle text-sm"></i><span>Upload Mutasi</span>`;
-                uploadBtn.classList.remove('opacity-80', 'cursor-not-allowed');
-            }
-            // Jika berhasil upload, muat ulang data dari database agar grafik & angka update otomatis!
-            muatDataDariDatabase(); 
-        }
-    };
-
-    const fileInput = document.getElementById('fileUpload');
-    if (fileInput) {
-        fileInput.addEventListener('change', async function() {
-            const file = this.files[0];
-            if (!file) return;
-            const formData = new FormData();
-            formData.append("file", file);
-            try {
-                await fetch("http://127.0.0.1:8000/api/upload", { method: "POST", body: formData });
-                this.value = ''; 
-            } catch (error) {
-                alert("Server Python terputus!");
-            }
-        });
-    }
-
-    // ==========================================
-    // 5. EDIT PROFILE BUTTON LOGIC
+    // EDIT PROFILE
     // ==========================================
     const editProfileBtn = document.getElementById('editProfileBtn');
     if (editProfileBtn) {
         const profileInputs = document.querySelectorAll('#fullName, #emailAddress, #phoneNumber, #architectBio');
         const profileSelects = document.querySelectorAll('#timezone');
-        
-        // Initial state: readonly/disabled + visual cue
         profileInputs.forEach(input => {
             input.setAttribute('readonly', 'true');
             if(input.classList) { input.classList.add('bg-slate-50', 'text-slate-500', 'cursor-not-allowed'); input.classList.remove('bg-white'); }
@@ -443,38 +397,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 editProfileBtn.innerHTML = '<i class="fas fa-save mr-2"></i>Save Profile';
                 editProfileBtn.classList.replace('bg-[#EEF2FF]', 'bg-[#2563EB]');
                 editProfileBtn.classList.replace('text-[#2563EB]', 'text-white');
-                
-                profileInputs.forEach(input => {
-                    input.removeAttribute('readonly');
-                    input.classList.remove('bg-slate-50', 'text-slate-500', 'cursor-not-allowed');
-                    input.classList.add('bg-white', 'ring-2', 'ring-blue-100');
-                });
-                profileSelects.forEach(select => {
-                    select.removeAttribute('disabled');
-                    select.classList.remove('bg-slate-50', 'text-slate-500', 'cursor-not-allowed');
-                    select.classList.add('bg-white', 'ring-2', 'ring-blue-100');
-                });
+                profileInputs.forEach(input => { input.removeAttribute('readonly'); input.classList.remove('bg-slate-50', 'text-slate-500', 'cursor-not-allowed'); input.classList.add('bg-white', 'ring-2', 'ring-blue-100'); });
+                profileSelects.forEach(select => { select.removeAttribute('disabled'); select.classList.remove('bg-slate-50', 'text-slate-500', 'cursor-not-allowed'); select.classList.add('bg-white', 'ring-2', 'ring-blue-100'); });
             } else {
                 editProfileBtn.innerHTML = 'Edit Profile';
                 editProfileBtn.classList.replace('bg-[#2563EB]', 'bg-[#EEF2FF]');
                 editProfileBtn.classList.replace('text-white', 'text-[#2563EB]');
-                
-                profileInputs.forEach(input => {
-                    input.setAttribute('readonly', 'true');
-                    input.classList.add('bg-slate-50', 'text-slate-500', 'cursor-not-allowed');
-                    input.classList.remove('bg-white', 'ring-2', 'ring-blue-100');
-                });
-                profileSelects.forEach(select => {
-                    select.setAttribute('disabled', 'true');
-                    select.classList.add('bg-slate-50', 'text-slate-500', 'cursor-not-allowed');
-                    select.classList.remove('bg-white', 'ring-2', 'ring-blue-100');
-                });
+                profileInputs.forEach(input => { input.setAttribute('readonly', 'true'); input.classList.add('bg-slate-50', 'text-slate-500', 'cursor-not-allowed'); input.classList.remove('bg-white', 'ring-2', 'ring-blue-100'); });
+                profileSelects.forEach(select => { select.setAttribute('disabled', 'true'); select.classList.add('bg-slate-50', 'text-slate-500', 'cursor-not-allowed'); select.classList.remove('bg-white', 'ring-2', 'ring-blue-100'); });
             }
         });
     }
 
     // ==========================================
-    // 6. DARK MODE LOGIC
+    // DARK MODE
     // ==========================================
     const darkModeToggles = document.querySelectorAll('.dark-mode-toggle');
     const isDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -482,7 +418,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateSettingsUI(isDark) {
         const btnLight = document.getElementById('btnLightMode');
         const btnDark = document.getElementById('btnDarkMode');
-        
         if (btnLight && btnDark) {
             if (isDark) {
                 btnDark.className = "color-mode-btn flex-1 bg-[#1E293B] border-2 border-[#2563EB] rounded-xl p-4 flex flex-col items-center justify-center space-y-2 text-[#3B82F6]";
@@ -494,33 +429,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    if (isDarkMode) {
-        document.body.classList.add('dark-mode');
-    }
+    if (isDarkMode) document.body.classList.add('dark-mode');
     updateSettingsUI(isDarkMode);
 
     function setDarkModeState(state) {
-        if (state) {
-            document.body.classList.add('dark-mode');
-        } else {
-            document.body.classList.remove('dark-mode');
-        }
+        if (state) document.body.classList.add('dark-mode');
+        else document.body.classList.remove('dark-mode');
         localStorage.setItem('darkMode', state);
         updateSettingsUI(state);
     }
 
-    if (darkModeToggles.length > 0) {
-        darkModeToggles.forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const newState = !document.body.classList.contains('dark-mode');
-                setDarkModeState(newState);
-            });
-        });
-    }
+    if (darkModeToggles.length > 0) darkModeToggles.forEach(toggle => toggle.addEventListener('click', () => setDarkModeState(!document.body.classList.contains('dark-mode'))));
 
     const btnLight = document.getElementById('btnLightMode');
     const btnDark = document.getElementById('btnDarkMode');
     if (btnLight) btnLight.addEventListener('click', () => setDarkModeState(false));
     if (btnDark) btnDark.addEventListener('click', () => setDarkModeState(true));
-
 });

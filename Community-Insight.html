@@ -8,8 +8,9 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
-<body class="min-h-screen overflow-y-auto bg-[#FAF8FF] font-sans text-[#0F172A]">
+<body class="min-h-screen overflow-y-auto bg-[#FAF8FF] font-sans text-[#131B2E]">
 
     <div class="flex min-h-screen relative">
         <!-- SIDEBAR -->
@@ -47,14 +48,13 @@
             </nav>
 
             <div class="mt-auto space-y-2 text-gray-400 pt-6 border-t border-slate-800">
-                
-                    <a href="Settings.html" class="flex items-center space-x-3 p-3 hover:text-white transition">
+                <a href="Settings.html" class="flex items-center space-x-3 p-3 hover:text-white transition">
                     <i class="fas fa-cog"></i>
-                    <span class="">Settings</span>
+                    <span>Settings</span>
                 </a>
                 <a href="Profile.html" class="flex items-center space-x-3 p-3 hover:text-white transition">
                     <i class="far fa-user"></i>
-                    <span class="">Profile</span>
+                    <span>Profile</span>
                 </a>
             </div>
             
@@ -63,7 +63,7 @@
                     <i class="far fa-question-circle"></i>
                     <span>Help Center</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 hover:text-white transition mt-4">
+                <a href="login.html" class="flex items-center space-x-3 hover:text-white transition mt-4">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -71,22 +71,389 @@
         </aside>
 
         <!-- MAIN LAYOUT -->
-        <div class="flex-1 ml-72 flex flex-col w-full min-h-screen">
+        <main class="flex-1 ml-72 p-10 overflow-y-auto">
             <!-- HEADER -->
-            <header class="flex justify-between items-center px-8 pt-8 pb-4 mb-4">
-                <div class="relative w-full max-w-lg">
+            <header class="flex justify-between items-center mb-10 pb-4">
+                <div class="relative w-1/2">
                     <span class="absolute inset-y-0 left-4 flex items-center text-gray-400">
                         <i class="fas fa-search"></i>
                     </span>
-                    <input type="text" aria-label="Search" placeholder="Search transactions, forecasts, or temporal trends..." class="w-full pl-12 pr-4 py-3 rounded-full bg-white border border-gray-100 focus:border-blue-500 outline-none shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] transition text-[13px] font-medium">
+                    <input type="text" placeholder="Search insights, forums, or demographic peers..." class="w-full pl-12 pr-4 py-3 rounded-full bg-white border border-gray-100 focus:border-blue-500 outline-none shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] transition text-sm">
                 </div>
 
-                <div class="flex items-center space-x-6 shrink-0">
-                    <button class="bg-[#2563EB] text-white px-6 py-2.5 rounded-full flex items-center space-x-2 shadow-lg shadow-blue-200/50 hover:bg-blue-700 transition text-[13px] font-bold tracking-wide">
-                        <i class="fas fa-upload text-sm"></i>
-                        <span>Upload Mutasi</span>
-                    </button>
-                    <div class="relative text-gray-400 cursor-pointer hover:text-gray-600 transition" aria-label="Notifications" role="button">
-                        <i class="far fa-bell text-[20px]"></i>
+                <div class="flex items-center space-x-6">
+                    <div class="relative inline-block">
+                        <button class="bg-[#2563EB] text-white px-5 py-2.5 rounded-full flex items-center space-x-2 shadow-lg shadow-blue-200 hover:bg-blue-700 transition text-sm font-medium">
+                            <i class="fas fa-upload text-sm"></i>
+                            <span>Upload Mutasi</span>
+                        </button>
+                        <input type="file" id="fileUpload" title="Upload Mutasi" aria-label="Upload Mutasi" accept=".pdf, .jpg, .png" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
                     </div>
+                    <div class="relative text-gray-400 cursor-pointer">
+                        <i class="far fa-bell text-xl"></i>
+                        <span class="absolute -top-1 -right-0.5 w-2 h-2 bg-red-500 rounded-full border-2 border-[#FAF8FF]"></span>
+                    </div>
+                    <a href="Settings.html" aria-label="Settings"><i class="fas fa-cog text-gray-400 text-[20px] cursor-pointer hover:text-gray-600 transition"></i></a>
+                    <a href="Profile.html" class="flex items-center space-x-3 border-l pl-6 border-gray-200 cursor-pointer hover:opacity-80 transition block">
+                        <div class="text-right leading-tight">
+                            <p class="font-bold text-sm text-[#0F172A]">Architect Prime</p>
+                            <p class="text-[9px] text-gray-400 uppercase tracking-widest font-black">Pro Account</p>
+                        </div>
+                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Avatar" class="w-10 h-10 rounded-full ring-2 ring-blue-50">
+                    </a>
+                </div>
+            </header>
+
+            <!-- TITLE & CONTROLS -->
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em] mb-1">Collaborative Financial Intelligence</p>
+                    <h1 class="text-[2.5rem] font-black tracking-tight leading-none text-[#0F172A]">Community &<br>AI Insights</h1>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="bg-white px-5 py-2 rounded-xl text-xs font-bold text-blue-600 shadow-sm border border-gray-100"><i class="fas fa-fire mr-2 text-amber-500"></i>Trending Insights</button>
+                    <button class="bg-transparent text-gray-500 hover:bg-white border border-transparent hover:border-gray-100 px-5 py-2 rounded-xl text-xs font-bold transition"><i class="fas fa-users-viewfinder mr-2"></i>My Peer Group</button>
+                </div>
+            </div>
+
+            <!-- GRID ROW 1: AI COGNITIVE BRAIN & SCORE -->
+            <div class="grid grid-cols-12 gap-8 mb-8">
+                <!-- AI Advisor & Scorecard -->
+                <div class="col-span-8 bg-gradient-to-br from-[#0F172A] to-[#1E293B] text-white rounded-[2rem] p-8 shadow-xl flex flex-col justify-between relative overflow-hidden group">
+                    <!-- Background decor glow -->
+                    <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-blue-500/10 blur-3xl group-hover:bg-blue-500/20 transition-all duration-500"></div>
                     
+                    <div class="flex justify-between items-start mb-6 z-10">
+                        <div class="max-w-md">
+                            <span class="bg-blue-500/20 text-blue-300 text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-full border border-blue-500/30 inline-block mb-3"><i class="fas fa-brain mr-1"></i> Gemini Cognitive Engine</span>
+                            <h2 class="text-xl font-bold tracking-tight mb-2">Personalized Financial Architecture Advisory</h2>
+                            <p class="text-xs text-gray-300 leading-relaxed">Your BCA statement analysis is complete. Currently, your savings velocity sits at <span class="text-blue-400 font-bold">23.5%</span>. Gemini projects you can reach <span class="text-green-400 font-bold">30.0%</span> next month by streamlining subscription overflows.</p>
+                        </div>
+                        
+                        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-4 text-center min-w-[120px] flex flex-col items-center">
+                            <span class="text-[8px] font-black uppercase text-gray-400 tracking-widest block mb-1">Financial Score</span>
+                            <div class="relative w-16 h-16 flex items-center justify-center">
+                                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                    <path class="text-slate-700" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="text-blue-500" stroke-width="3" stroke-dasharray="78, 100" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <span class="absolute text-sm font-black">78<span class="text-[9px] text-gray-400">/100</span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gemini Ask Input -->
+                    <div class="border-t border-slate-800 pt-6 mt-6 z-10">
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Ask Gemini a financial query:</p>
+                        <form id="geminiQueryForm" onsubmit="submitGeminiQuery(event)" class="relative flex items-center">
+                            <input type="text" id="geminiQueryInput" placeholder="How can I optimize my tax deductibles this month?" class="w-full pl-5 pr-12 py-3.5 rounded-xl bg-slate-900 border border-slate-800 text-sm placeholder-gray-500 focus:border-blue-500 outline-none text-white transition">
+                            <button type="submit" class="absolute right-3 w-8 h-8 rounded-lg bg-blue-600 hover:bg-blue-500 text-white flex items-center justify-center transition shadow-lg">
+                                <i class="fas fa-paper-plane text-xs"></i>
+                            </button>
+                        </form>
+                        
+                        <!-- Simulated AI response area -->
+                        <div id="aiResponseArea" class="hidden bg-slate-900/50 border border-slate-800 rounded-xl p-4 mt-4 text-xs text-gray-300 leading-relaxed items-start space-x-3">
+                            <div class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center shrink-0 text-white text-[10px] font-bold mt-0.5">G</div>
+                            <div id="aiResponseText" class="flex-1"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Peer Demographics Benchmark -->
+                <div class="col-span-4 bg-white rounded-[2rem] p-8 shadow-sm border border-gray-50 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-base font-bold text-[#0F172A] mb-1">Architect Benchmarking</h3>
+                        <p class="text-[11px] text-gray-400 mb-6">Demographic Peer Group: SaaS Founders & Tech Leads</p>
+
+                        <!-- Bars -->
+                        <div class="space-y-4">
+                            <!-- Metric 1 -->
+                            <div>
+                                <div class="flex justify-between text-[11px] font-bold mb-1">
+                                    <span class="text-gray-500">Savings Rate</span>
+                                    <span class="text-[#0F172A]">You: 23.5% <span class="text-gray-400 font-medium">/ Peer: 18%</span></span>
+                                </div>
+                                <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden flex">
+                                    <div class="bg-blue-600 h-full rounded-l-full" style="width: 23.5%"></div>
+                                    <div class="bg-gray-300 h-full rounded-r-full" style="width: 18%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Metric 2 -->
+                            <div>
+                                <div class="flex justify-between text-[11px] font-bold mb-1">
+                                    <span class="text-gray-500">Monthly Bills</span>
+                                    <span class="text-[#0F172A]">You: $1,200 <span class="text-gray-400 font-medium">/ Peer: $1,550</span></span>
+                                </div>
+                                <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden flex">
+                                    <div class="bg-green-500 h-full rounded-l-full" style="width: 45%"></div>
+                                    <div class="bg-gray-300 h-full rounded-r-full" style="width: 58%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Metric 3 -->
+                            <div>
+                                <div class="flex justify-between text-[11px] font-bold mb-1">
+                                    <span class="text-gray-500">Investment Alloc.</span>
+                                    <span class="text-[#0F172A]">You: 40.0% <span class="text-gray-400 font-medium">/ Peer: 30%</span></span>
+                                </div>
+                                <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden flex">
+                                    <div class="bg-purple-500 h-full rounded-l-full" style="width: 40%"></div>
+                                    <div class="bg-gray-300 h-full rounded-r-full" style="width: 30%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50/50 border border-blue-100 rounded-xl p-4 text-xs text-blue-700 leading-relaxed font-semibold mt-4">
+                        <i class="far fa-lightbulb mr-1.5 text-blue-500"></i> You spend <span class="underline">22.6% less</span> on bills than average peers. This gives you a high capital yield surplus!
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRID ROW 2: ACTIVE COMMUNITY FORUMS & PERSONAL INSIGHTS -->
+            <div class="grid grid-cols-12 gap-8">
+                <!-- PERSONAL INSIGHT ALERTS -->
+                <div class="col-span-4 space-y-6">
+                    <h2 class="text-[11px] text-gray-400 uppercase tracking-[0.2em] font-bold">Personalized AI Alerts</h2>
+
+                    <!-- Insight Alert 1 -->
+                    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-50 hover:shadow-md transition duration-200 flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center shrink-0 text-amber-600">
+                            <i class="fas fa-gauge-high text-base"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-[#0F172A] mb-1">High Velocity Spending</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">Weekly spend rate increases by <span class="text-amber-600 font-bold">42% on Fridays</span> between 18:00 and 21:00 (principally Dining & Pubs).</p>
+                        </div>
+                    </div>
+
+                    <!-- Insight Alert 2 -->
+                    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-50 hover:shadow-md transition duration-200 flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center shrink-0 text-purple-600">
+                            <i class="fas fa-rotate text-base"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-[#0F172A] mb-1">Duplicate Subscriptions</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">Identified overlap: You are paying for both <span class="text-purple-600 font-bold">Spotify Premium</span> and <span class="text-purple-600 font-bold">Apple One</span>. Potential save: $12.99/mo.</p>
+                        </div>
+                    </div>
+
+                    <!-- Insight Alert 3 -->
+                    <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-50 hover:shadow-md transition duration-200 flex items-start space-x-4">
+                        <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center shrink-0 text-green-600">
+                            <i class="fas fa-money-bill-trend-up text-base"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm text-[#0F172A] mb-1">Tax Harvest Opportunity</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed">You have $8,200 of capital losses that can offset taxable income. Apply for deduction before late Q4 tax reporting.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CROWDSOURCED COMMUNITY FEED -->
+                <div class="col-span-8 bg-white rounded-[2rem] p-8 shadow-[0_4px_30px_-10px_rgba(0,0,0,0.03)] border border-gray-50">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-lg font-bold text-[#0F172A]">Crowdsourced Architect Feed</h3>
+                        <button class="bg-[#2563EB] text-white px-4 py-2 rounded-xl flex items-center space-x-2 hover:bg-blue-700 transition text-xs font-bold shadow-md shadow-blue-100">
+                            <i class="fas fa-plus"></i>
+                            <span>Write Post</span>
+                        </button>
+                    </div>
+
+                    <!-- Post Items -->
+                    <div class="space-y-6 divide-y divide-gray-50">
+                        <!-- Post 1 -->
+                        <div class="pt-6 first:pt-0">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://i.pravatar.cc/150?u=debt_slayer" alt="User Avatar" class="w-9 h-9 rounded-full ring-2 ring-blue-50">
+                                    <div>
+                                        <span class="block font-bold text-sm text-[#0F172A]">@debt_slayer</span>
+                                        <span class="block text-[9px] text-gray-400 font-bold uppercase tracking-wider">Mortgage Optimizer</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] text-gray-400 font-medium">3 hours ago</span>
+                            </div>
+                            <h4 class="font-bold text-sm text-[#0F172A] mb-2 hover:text-blue-600 cursor-pointer transition">How I optimized my home loan interest rate down to 4.2% (Step-by-Step guide)</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">Leveraged BCA's floating rate caps and consolidated equity balances. Created an offset account to lock down principal amounts before interest accrued...</p>
+                            <div class="flex items-center space-x-6 text-gray-400 text-xs font-semibold">
+                                <button class="flex items-center space-x-2 hover:text-blue-600 transition" onclick="incrementVote(this)">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span class="vote-count">142</span>
+                                </button>
+                                <button class="flex items-center space-x-2 hover:text-blue-600 transition">
+                                    <i class="far fa-comment-dots"></i>
+                                    <span>28 Comments</span>
+                                </button>
+                                <button class="flex items-center space-x-2 hover:text-blue-600 transition ml-auto">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Post 2 -->
+                        <div class="pt-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://i.pravatar.cc/150?u=architect_capital" alt="User Avatar" class="w-9 h-9 rounded-full ring-2 ring-blue-50">
+                                    <div>
+                                        <span class="block font-bold text-sm text-[#0F172A]">@architect_capital</span>
+                                        <span class="block text-[9px] text-gray-400 font-bold uppercase tracking-wider">Venture Architect</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] text-gray-400 font-medium">1 day ago</span>
+                            </div>
+                            <h4 class="font-bold text-sm text-[#0F172A] mb-2 hover:text-blue-600 cursor-pointer transition">Is anyone planning a DCA into the new AI-focused index funds next quarter?</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">Looking at the portfolio metrics, they rebalance dynamically based on developer velocity on Github and API request stats. Looks promising for a 15% allocation pool.</p>
+                            <div class="flex items-center space-x-6 text-gray-400 text-xs font-semibold">
+                                <button class="flex items-center space-x-2 hover:text-blue-600 transition" onclick="incrementVote(this)">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span class="vote-count">94</span>
+                                </button>
+                                <button class="flex items-center space-x-2 hover:text-blue-600 transition">
+                                    <i class="far fa-comment-dots"></i>
+                                    <span>12 Comments</span>
+                                </button>
+                                <button class="flex items-center space-x-2 hover:text-blue-600 transition ml-auto">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Post 3 -->
+                        <div class="pt-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://i.pravatar.cc/150?u=gemini_wizard" alt="User Avatar" class="w-9 h-9 rounded-full ring-2 ring-blue-50">
+                                    <div>
+                                        <span class="block font-bold text-sm text-[#0F172A]">@gemini_wizard</span>
+                                        <span class="block text-[9px] text-gray-400 font-bold uppercase tracking-wider">ML Architect</span>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] text-gray-400 font-medium">2 days ago</span>
+                            </div>
+                            <h4 class="font-bold text-sm text-[#0F172A] mb-2 hover:text-blue-600 cursor-pointer transition">My BCA statement category classifier is 99% accurate now. Here is my rule matrix.</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed mb-4">Combined rule-based string maps for common merchants with regex bounds, then fed the rest to Gemini API with clear temperature controls. No more LLM rate limits!</p>
+                            <div class="flex items-center space-x-6 text-gray-400 text-xs font-semibold">
+                                <button class="flex items-center space-x-2 hover:text-blue-600 transition" onclick="incrementVote(this)">
+                                    <i class="far fa-thumbs-up"></i>
+                                    <span class="vote-count">210</span>
+                                </button>
+                                <button class="flex items-center space-x-2 hover:text-blue-600 transition">
+                                    <i class="far fa-comment-dots"></i>
+                                    <span>43 Comments</span>
+                                </button>
+                                <button class="flex items-center space-x-2 hover:text-blue-600 transition ml-auto">
+                                    <i class="far fa-bookmark"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- TOAST POPUP NOTIFICATION -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white" id="toastIcon">
+            <i class="fas fa-info"></i>
+        </div>
+        <div>
+            <p class="font-bold text-sm" id="toastTitle">Advisor Prompt</p>
+            <p class="text-xs text-gray-400" id="toastMessage">Updating recommendation algorithms.</p>
+        </div>
+    </div>
+
+    <!-- SCRIPT SECTION -->
+    <script>
+        // Increment Upvote
+        function incrementVote(btn) {
+            const countEl = btn.querySelector('.vote-count');
+            const icon = btn.querySelector('i');
+            let votes = parseInt(countEl.textContent);
+
+            if (btn.classList.contains('text-blue-600')) {
+                // Remove like
+                btn.classList.remove('text-blue-600');
+                icon.className = 'far fa-thumbs-up';
+                countEl.textContent = votes - 1;
+            } else {
+                // Add like
+                btn.classList.add('text-blue-600');
+                icon.className = 'fas fa-thumbs-up';
+                countEl.textContent = votes + 1;
+                showToast('Upvote Registered', 'Thank you for contributing to community intelligence.', 'blue');
+            }
+        }
+
+        // Submit Gemini Query
+        function submitGeminiQuery(e) {
+            e.preventDefault();
+            const input = document.getElementById('geminiQueryInput');
+            const responseArea = document.getElementById('aiResponseArea');
+            const responseText = document.getElementById('aiResponseText');
+            const btn = document.querySelector('#geminiQueryForm button');
+            const query = input.value.trim();
+
+            if (!query) return;
+
+            // Loading state
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fas fa-spinner animate-spin text-xs"></i>`;
+            responseArea.classList.remove('hidden');
+            responseArea.classList.add('flex');
+            responseText.innerHTML = `<span class="italic text-gray-500">Gemini is parsing your financial statement ledger and synthesizing advice...</span>`;
+
+            // Simulate query response
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fas fa-paper-plane text-xs"></i>`;
+                
+                // Formulate response based on keywords
+                let advice = "Based on your transaction database, your current debt-to-equity ratio is stable. I recommend re-allocating $500 of idle cash to your Active Goals (e.g., Emergency Fund) which currently yields a projected 5.2% APY compound returns.";
+                
+                if (query.toLowerCase().includes('tax') || query.toLowerCase().includes('pajak')) {
+                    advice = "Analyzing tax deductibles: Your workspace subscriptions ($240 AWS, $15 Spotify/Apple One) can be written off as business operations expense under Section 179. Ensure you export a 'Tax Deduction Helper' PDF from the Reports page for compliance.";
+                } else if (query.toLowerCase().includes('subs') || query.toLowerCase().includes('langganan') || query.toLowerCase().includes('hemat')) {
+                    advice = "To reduce subscription leaks: I detect overlap between Spotify and Apple One. Cancelling Spotify Premium immediately saves $12.99 monthly, increasing your savings rate by 0.12% with zero utility cost.";
+                }
+
+                responseText.innerHTML = `<strong>Gemini Advisor:</strong> ${advice}`;
+                input.value = '';
+                showToast('AI Synthesis Completed', 'Gemini successfully generated actionable advice.', 'green');
+            }, 1800);
+        }
+
+        // Show Toast Popups
+        function showToast(title, message, color) {
+            const toast = document.getElementById('toastNotification');
+            const iconContainer = document.getElementById('toastIcon');
+            const titleEl = document.getElementById('toastTitle');
+            const msgEl = document.getElementById('toastMessage');
+
+            titleEl.textContent = title;
+            msgEl.textContent = message;
+
+            if (color === 'green') {
+                iconContainer.className = 'w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white';
+                iconContainer.innerHTML = '<i class="fas fa-check"></i>';
+            } else if (color === 'blue') {
+                iconContainer.className = 'w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white';
+                iconContainer.innerHTML = '<i class="fas fa-brain"></i>';
+            }
+
+            // Slide in
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            // Slide out after 3.5s
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+    </script>
+    <script src="js/global-upload.js"></script>
+</body>
+</html>

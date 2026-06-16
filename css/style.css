@@ -621,3 +621,18 @@ body.dark-mode hr {
 /* Utilities */
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Stylized Activity Intensity Bars */
+.intensity-bar {
+    width: 24px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    transition: all 0.3s ease;
+}
+.intensity-bar:hover {
+    transform: scaleY(1.05);
+    filter: brightness(1.1);
+    cursor: pointer;
+}
+
+

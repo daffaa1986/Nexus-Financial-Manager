@@ -42,7 +42,7 @@ files.forEach(file => {
                     <i class="far fa-question-circle"></i>
                     <span>Help Center</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 hover:text-white transition mt-4">
+                <a href="login.html" class="flex items-center space-x-3 hover:text-white transition mt-4">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>

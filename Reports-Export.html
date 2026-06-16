@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body class="min-h-screen overflow-y-auto bg-[#FAF8FF] font-sans text-[#131B2E]">
 
@@ -47,14 +48,13 @@
             </nav>
 
             <div class="mt-auto space-y-2 text-gray-400 pt-6 border-t border-slate-800">
-                
-                    <a href="Settings.html" class="flex items-center space-x-3 p-3 hover:text-white transition">
+                <a href="Settings.html" class="flex items-center space-x-3 p-3 hover:text-white transition">
                     <i class="fas fa-cog"></i>
-                    <span class="">Settings</span>
+                    <span>Settings</span>
                 </a>
                 <a href="Profile.html" class="flex items-center space-x-3 p-3 hover:text-white transition">
                     <i class="far fa-user"></i>
-                    <span class="">Profile</span>
+                    <span>Profile</span>
                 </a>
             </div>
             
@@ -63,7 +63,7 @@
                     <i class="far fa-question-circle"></i>
                     <span>Help Center</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 hover:text-white transition mt-4">
+                <a href="login.html" class="flex items-center space-x-3 hover:text-white transition mt-4">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -71,22 +71,526 @@
         </aside>
 
         <!-- MAIN LAYOUT -->
-        <div class="flex-1 ml-72 flex flex-col w-full min-h-screen">
+        <main class="flex-1 ml-72 p-10 overflow-y-auto">
             <!-- HEADER -->
-            <header class="flex justify-between items-center px-8 pt-8 pb-4 mb-6">
-                <div class="relative w-full max-w-lg">
+            <header class="flex justify-between items-center mb-10 pb-4">
+                <div class="relative w-1/2">
                     <span class="absolute inset-y-0 left-4 flex items-center text-gray-400">
                         <i class="fas fa-search"></i>
                     </span>
-                    <input type="text" aria-label="Search" placeholder="Search transactions, forecasts, or temporal trends..." class="w-full pl-12 pr-4 py-3 rounded-full bg-white border border-gray-100 focus:border-blue-500 outline-none shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] transition text-sm">
+                    <input type="text" placeholder="Search transactions, forecasts, or reports..." class="w-full pl-12 pr-4 py-3 rounded-full bg-white border border-gray-100 focus:border-blue-500 outline-none shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] transition text-sm">
                 </div>
 
-                <div class="flex items-center space-x-6 shrink-0">
-                    <button class="bg-[#2563EB] text-white px-5 py-2.5 rounded-full flex items-center space-x-2 shadow-lg shadow-blue-200 hover:bg-blue-700 transition text-sm font-medium">
-                        <i class="fas fa-upload text-sm"></i>
-                        <span>Upload Mutasi</span>
-                    </button>
-                    <div class="relative text-gray-400 cursor-pointer" aria-label="Notifications" role="button">
-                        <i class="far fa-bell text-xl"></i>
+                <div class="flex items-center space-x-6">
+                    <div class="relative inline-block">
+                        <button class="bg-[#2563EB] text-white px-5 py-2.5 rounded-full flex items-center space-x-2 shadow-lg shadow-blue-200 hover:bg-blue-700 transition text-sm font-medium">
+                            <i class="fas fa-upload text-sm"></i>
+                            <span>Upload Mutasi</span>
+                        </button>
+                        <input type="file" id="fileUpload" title="Upload Mutasi" aria-label="Upload Mutasi" accept=".pdf, .jpg, .png" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
                     </div>
+                    <div class="relative text-gray-400 cursor-pointer">
+                        <i class="far fa-bell text-xl"></i>
+                        <span class="absolute -top-1 -right-0.5 w-2 h-2 bg-red-500 rounded-full border-2 border-[#FAF8FF]"></span>
+                    </div>
+                    <a href="Settings.html" aria-label="Settings"><i class="fas fa-cog text-gray-400 text-[20px] cursor-pointer hover:text-gray-600 transition"></i></a>
+                    <a href="Profile.html" class="flex items-center space-x-3 border-l pl-6 border-gray-200 cursor-pointer hover:opacity-80 transition block">
+                        <div class="text-right leading-tight">
+                            <p class="font-bold text-sm text-[#0F172A]">Architect Prime</p>
+                            <p class="text-[9px] text-gray-400 uppercase tracking-widest font-black">Pro Account</p>
+                        </div>
+                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Avatar" class="w-10 h-10 rounded-full ring-2 ring-blue-50">
+                    </a>
+                </div>
+            </header>
+
+            <!-- TITLE & CONTROLS -->
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em] mb-1">Financial Intelligence Exporter</p>
+                    <h1 class="text-[2.5rem] font-black tracking-tight leading-none text-[#0F172A]">Reports &<br>Data Export</h1>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="bg-white px-5 py-2 rounded-xl text-xs font-bold text-blue-600 shadow-sm border border-gray-100"><i class="fas fa-file-invoice-dollar mr-2"></i>Templates</button>
+                    <button class="bg-transparent text-gray-500 hover:bg-white border border-transparent hover:border-gray-100 px-5 py-2 rounded-xl text-xs font-bold transition"><i class="fas fa-history mr-2"></i>Export History</button>
+                </div>
+            </div>
+
+            <!-- GRID ROW 1: REPORT TEMPLATES -->
+            <div class="mb-10">
+                <h2 class="text-[11px] text-gray-400 uppercase tracking-[0.2em] font-bold mb-4">Quick Report Templates</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <!-- Template 1: Cash Flow -->
+                    <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-50 hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col justify-between min-h-[180px]" onclick="selectTemplate('Cash Flow Statement', 'inflow_outflow')">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center mb-4 group-hover:bg-blue-100 transition">
+                                <i class="fas fa-exchange-alt text-blue-600"></i>
+                            </div>
+                            <h3 class="font-bold text-sm text-[#0F172A] mb-1">Cash Flow Statement</h3>
+                            <p class="text-[11px] text-gray-400 leading-relaxed">Full logs of inflows, outflows, and net changes.</p>
+                        </div>
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-wider mt-4 inline-flex items-center">Generate <i class="fas fa-arrow-right ml-1 transition group-hover:translate-x-1"></i></span>
+                    </div>
+
+                    <!-- Template 2: Category Architecture -->
+                    <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-50 hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col justify-between min-h-[180px]" onclick="selectTemplate('Category Architecture & Spending', 'categories')">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center mb-4 group-hover:bg-purple-100 transition">
+                                <i class="fas fa-chart-pie text-purple-600"></i>
+                            </div>
+                            <h3 class="font-bold text-sm text-[#0F172A] mb-1">Expense Deep-Dive</h3>
+                            <p class="text-[11px] text-gray-400 leading-relaxed">Visual summary and category structural analysis.</p>
+                        </div>
+                        <span class="text-[9px] font-black text-purple-600 uppercase tracking-wider mt-4 inline-flex items-center">Generate <i class="fas fa-arrow-right ml-1 transition group-hover:translate-x-1"></i></span>
+                    </div>
+
+                    <!-- Template 3: Tax Deduction -->
+                    <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-50 hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col justify-between min-h-[180px]" onclick="selectTemplate('Tax Estimation & Deductions', 'taxes')">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center mb-4 group-hover:bg-green-100 transition">
+                                <i class="fas fa-percent text-green-600"></i>
+                            </div>
+                            <h3 class="font-bold text-sm text-[#0F172A] mb-1">Tax Deduction Helper</h3>
+                            <p class="text-[11px] text-gray-400 leading-relaxed">Automatic identification of tax-deductible items.</p>
+                        </div>
+                        <span class="text-[9px] font-black text-green-600 uppercase tracking-wider mt-4 inline-flex items-center">Generate <i class="fas fa-arrow-right ml-1 transition group-hover:translate-x-1"></i></span>
+                    </div>
+
+                    <!-- Template 4: AI Audit -->
+                    <div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-50 hover:shadow-xl hover:border-blue-200 transition-all cursor-pointer group flex flex-col justify-between min-h-[180px]" onclick="selectTemplate('AI Financial Audit & Health', 'ai_health')">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center mb-4 group-hover:bg-amber-100 transition">
+                                <i class="fas fa-wand-magic-sparkles text-amber-600"></i>
+                            </div>
+                            <h3 class="font-bold text-sm text-[#0F172A] mb-1">AI Financial Health</h3>
+                            <p class="text-[11px] text-gray-400 leading-relaxed">Gemini-powered financial insights and recommendations.</p>
+                        </div>
+                        <span class="text-[9px] font-black text-amber-600 uppercase tracking-wider mt-4 inline-flex items-center">Generate <i class="fas fa-arrow-right ml-1 transition group-hover:translate-x-1"></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GRID ROW 2: MAIN PANEL & GRAPH -->
+            <div class="grid grid-cols-12 gap-8 mb-8">
+                <!-- EXPORT BUILDER -->
+                <div class="col-span-5 bg-white rounded-[2rem] p-8 shadow-[0_4px_30px_-10px_rgba(0,0,0,0.03)] border border-gray-50 flex flex-col justify-between min-h-full">
+                    <div>
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-lg font-bold text-[#0F172A]">Export Builder</h3>
+                            <span class="text-[9px] font-black uppercase text-gray-400 bg-gray-100 px-3 py-1 rounded-full">Custom Panel</span>
+                        </div>
+
+                        <!-- Config Form -->
+                        <div class="space-y-5">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 font-black">Report Template</label>
+                                <input type="text" id="reportTemplateInput" value="Cash Flow Statement" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none text-sm font-semibold text-[#0F172A]" readonly>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="dateFrom" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 font-black">Start Date</label>
+                                    <input type="date" id="dateFrom" value="2026-06-01" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none text-sm font-semibold text-gray-600">
+                                </div>
+                                <div>
+                                    <label for="dateTo" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 font-black">End Date</label>
+                                    <input type="date" id="dateTo" value="2026-06-30" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 outline-none text-sm font-semibold text-gray-600">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 font-black">Export Format</label>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <label class="flex flex-col items-center justify-center p-3 border border-blue-500 bg-blue-50/50 rounded-xl cursor-pointer hover:bg-blue-50/30 transition text-center select-format group" data-format="pdf">
+                                        <input type="radio" name="exportFormat" value="pdf" checked class="hidden">
+                                        <i class="far fa-file-pdf text-xl text-blue-600 mb-1"></i>
+                                        <span class="text-xs font-bold text-blue-600">PDF</span>
+                                    </label>
+                                    <label class="flex flex-col items-center justify-center p-3 border border-gray-100 rounded-xl cursor-pointer hover:bg-gray-50/30 transition text-center select-format group" data-format="csv">
+                                        <input type="radio" name="exportFormat" value="csv" class="hidden">
+                                        <i class="fas fa-file-csv text-xl text-gray-400 group-hover:text-blue-500 mb-1"></i>
+                                        <span class="text-xs font-bold text-gray-500 group-hover:text-blue-500">CSV</span>
+                                    </label>
+                                    <label class="flex flex-col items-center justify-center p-3 border border-gray-100 rounded-xl cursor-pointer hover:bg-gray-50/30 transition text-center select-format group" data-format="xlsx">
+                                        <input type="radio" name="exportFormat" value="xlsx" class="hidden">
+                                        <i class="far fa-file-excel text-xl text-gray-400 group-hover:text-blue-500 mb-1"></i>
+                                        <span class="text-xs font-bold text-gray-500 group-hover:text-blue-500">Excel</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 font-black">Included Categories</label>
+                                <div class="grid grid-cols-2 gap-2 text-xs font-semibold text-gray-600 max-h-36 overflow-y-auto pr-2">
+                                    <label class="flex items-center space-x-2"><input type="checkbox" checked class="rounded border-gray-300 text-blue-600"> <span>All Categories</span></label>
+                                    <label class="flex items-center space-x-2"><input type="checkbox" class="rounded border-gray-300 text-blue-600"> <span>Dining & Social</span></label>
+                                    <label class="flex items-center space-x-2"><input type="checkbox" class="rounded border-gray-300 text-blue-600"> <span>Bills & Utilities</span></label>
+                                    <label class="flex items-center space-x-2"><input type="checkbox" class="rounded border-gray-300 text-blue-600"> <span>Groceries</span></label>
+                                    <label class="flex items-center space-x-2"><input type="checkbox" class="rounded border-gray-300 text-blue-600"> <span>Travel & Transport</span></label>
+                                    <label class="flex items-center space-x-2"><input type="checkbox" class="rounded border-gray-300 text-blue-600"> <span>Investments</span></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress bar & Action button -->
+                    <div class="mt-8">
+                        <div id="exportProgressBarContainer" class="w-full bg-gray-100 h-2 rounded-full mb-4 overflow-hidden hidden">
+                            <div id="exportProgressBar" class="bg-blue-600 h-full rounded-full w-0 transition-all duration-300"></div>
+                        </div>
+                        <button id="generateExportBtn" onclick="runExportSimulation()" class="w-full bg-[#2563EB] text-white py-4 rounded-2xl flex items-center justify-center space-x-3 font-bold text-sm shadow-xl hover:bg-blue-700 transition">
+                            <i class="fas fa-file-export"></i>
+                            <span>Generate & Export Report</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PREVIEW CHART -->
+                <div class="col-span-7 bg-white rounded-[2rem] p-8 shadow-[0_4px_30px_-10px_rgba(0,0,0,0.03)] border border-gray-50 flex flex-col justify-between">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-[#0F172A] mb-1">Cash Flow Architecture</h3>
+                            <p class="text-[11px] text-gray-500 leading-relaxed font-medium">Inflows vs Outflows over the last 6 months.</p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <span class="flex items-center text-[10px] font-bold text-green-600 bg-green-50 px-2.5 py-1 rounded-lg border border-green-100"><span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>Inflow</span>
+                            <span class="flex items-center text-[10px] font-bold text-red-500 bg-red-50 px-2.5 py-1 rounded-lg border border-red-100"><span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>Outflow</span>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 min-h-[300px] flex items-center justify-center">
+                        <canvas id="cashflowChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EXPORT HISTORY LOG -->
+            <section class="bg-white rounded-[2rem] p-8 shadow-[0_4px_30px_-10px_rgba(0,0,0,0.03)] border border-gray-50">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-lg font-bold text-[#0F172A]">Export History Log</h3>
+                    <button class="text-gray-400 hover:text-blue-600 text-xs font-bold transition" onclick="clearHistory()"><i class="fas fa-trash-alt mr-1"></i> Clear Log</button>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="border-b border-gray-100 text-gray-400 text-xs font-bold uppercase tracking-wider">
+                                <th class="py-3 pr-4">Report Name</th>
+                                <th class="py-3 px-4">Period Scope</th>
+                                <th class="py-3 px-4">Format</th>
+                                <th class="py-3 px-4">Generated Date</th>
+                                <th class="py-3 px-4">Size</th>
+                                <th class="py-3 pl-4 text-right">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="exportHistoryTbody" class="divide-y divide-gray-50">
+                            <tr class="hover:bg-slate-50/50 transition duration-150">
+                                <td class="py-4 pr-4 font-bold text-[#0F172A] flex items-center"><i class="far fa-file-pdf text-red-500 text-lg mr-3"></i> Q1 consolidated_statement.pdf</td>
+                                <td class="py-4 px-4 font-medium text-gray-500">Jan 01 - Mar 31, 2026</td>
+                                <td class="py-4 px-4"><span class="bg-red-50 text-red-600 text-[10px] font-black px-2.5 py-1 rounded border border-red-100">PDF</span></td>
+                                <td class="py-4 px-4 text-gray-500">Jun 14, 2026, 11:24</td>
+                                <td class="py-4 px-4 text-gray-500">2.4 MB</td>
+                                <td class="py-4 pl-4 text-right">
+                                    <button class="text-blue-600 hover:text-blue-800 font-bold text-xs" onclick="simulateDownload('Q1 consolidated_statement.pdf')"><i class="fas fa-download mr-1"></i> Download</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 transition duration-150">
+                                <td class="py-4 pr-4 font-bold text-[#0F172A] flex items-center"><i class="far fa-file-excel text-green-600 text-lg mr-3"></i> full_ledger_export.xlsx</td>
+                                <td class="py-4 px-4 font-medium text-gray-500">May 01 - May 31, 2026</td>
+                                <td class="py-4 px-4"><span class="bg-green-50 text-green-600 text-[10px] font-black px-2.5 py-1 rounded border border-green-100">XLSX</span></td>
+                                <td class="py-4 px-4 text-gray-500">Jun 02, 2026, 09:15</td>
+                                <td class="py-4 px-4 text-gray-500">845 KB</td>
+                                <td class="py-4 pl-4 text-right">
+                                    <button class="text-blue-600 hover:text-blue-800 font-bold text-xs" onclick="simulateDownload('full_ledger_export.xlsx')"><i class="fas fa-download mr-1"></i> Download</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/50 transition duration-150">
+                                <td class="py-4 pr-4 font-bold text-[#0F172A] flex items-center"><i class="fas fa-file-csv text-blue-500 text-lg mr-3"></i> bca_statement_parsed.csv</td>
+                                <td class="py-4 px-4 font-medium text-gray-500">Jun 01 - Jun 15, 2026</td>
+                                <td class="py-4 px-4"><span class="bg-blue-50 text-blue-600 text-[10px] font-black px-2.5 py-1 rounded border border-blue-100">CSV</span></td>
+                                <td class="py-4 px-4 text-gray-500">Jun 16, 2026, 23:42</td>
+                                <td class="py-4 px-4 text-gray-500">112 KB</td>
+                                <td class="py-4 pl-4 text-right">
+                                    <button class="text-blue-600 hover:text-blue-800 font-bold text-xs" onclick="simulateDownload('bca_statement_parsed.csv')"><i class="fas fa-download mr-1"></i> Download</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- TOAST POPUP NOTIFICATION -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 bg-slate-900 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center space-x-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white" id="toastIcon">
+            <i class="fas fa-check"></i>
+        </div>
+        <div>
+            <p class="font-bold text-sm" id="toastTitle">Export Complete</p>
+            <p class="text-xs text-gray-400" id="toastMessage">Your PDF report was successfully compiled.</p>
+        </div>
+    </div>
+
+    <!-- SCRIPT SECTION -->
+    <script>
+        // Interactive format buttons
+        const formatLabels = document.querySelectorAll('.select-format');
+        formatLabels.forEach(label => {
+            label.addEventListener('click', () => {
+                // Clear active styles
+                formatLabels.forEach(l => {
+                    l.classList.remove('border-blue-500', 'bg-blue-50/50');
+                    l.classList.add('border-gray-100');
+                    const icon = l.querySelector('i');
+                    const text = l.querySelector('span');
+                    icon.className = icon.className.replace('text-blue-600', 'text-gray-400');
+                    text.className = text.className.replace('text-blue-600', 'text-gray-500');
+                });
+
+                // Apply active styles
+                label.classList.remove('border-gray-100');
+                label.classList.add('border-blue-500', 'bg-blue-50/50');
+                const activeIcon = label.querySelector('i');
+                const activeText = label.querySelector('span');
+                
+                // Set appropriate icon class
+                const fmt = label.getAttribute('data-format');
+                if (fmt === 'pdf') {
+                    activeIcon.className = 'far fa-file-pdf text-xl text-blue-600 mb-1';
+                } else if (fmt === 'csv') {
+                    activeIcon.className = 'fas fa-file-csv text-xl text-blue-600 mb-1';
+                } else if (fmt === 'xlsx') {
+                    activeIcon.className = 'far fa-file-excel text-xl text-blue-600 mb-1';
+                }
+                activeText.className = 'text-xs font-bold text-blue-600';
+            });
+        });
+
+        // Template Selection
+        function selectTemplate(name, type) {
+            document.getElementById('reportTemplateInput').value = name;
+            showToast('Template Loaded', 'Export configured for ' + name, 'blue');
+        }
+
+        // Export Simulation
+        function runExportSimulation() {
+            const btn = document.getElementById('generateExportBtn');
+            const progressContainer = document.getElementById('exportProgressBarContainer');
+            const progressBar = document.getElementById('exportProgressBar');
+            const template = document.getElementById('reportTemplateInput').value;
+            const fromDate = document.getElementById('dateFrom').value;
+            const toDate = document.getElementById('dateTo').value;
+            const formatRadio = document.querySelector('input[name="exportFormat"]:checked');
+            const format = formatRadio ? formatRadio.value.toUpperCase() : 'PDF';
+
+            // Disable button
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fas fa-spinner animate-spin"></i> <span>Compiling Architecture Data...</span>`;
+            progressContainer.classList.remove('hidden');
+            progressBar.style.width = '0%';
+
+            // Animate progress bar
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.floor(Math.random() * 15) + 5;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
                     
+                    // Finalize
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.innerHTML = `<i class="fas fa-file-export"></i> <span>Generate & Export Report</span>`;
+                        progressContainer.classList.add('hidden');
+
+                        // Add to log
+                        addLogItem(template, fromDate, toDate, format);
+
+                        // Toast alert
+                        showToast('Export Complete', `${template}.${format.toLowerCase()} has been compiled & downloaded.`, 'green');
+                    }, 500);
+                }
+                progressBar.style.width = progress + '%';
+            }, 150);
+        }
+
+        // Add item to history log
+        function addLogItem(template, from, to, format) {
+            const tbody = document.getElementById('exportHistoryTbody');
+            const fileExtension = format.toLowerCase();
+            const fileName = template.toLowerCase().replace(/ /g, '_') + '.' + fileExtension;
+            
+            // Format today's date
+            const now = new Date();
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const formattedDate = `${months[now.getMonth()]} ${String(now.getDate()).padStart(2, '0')}, ${now.getFullYear()}, ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
+            // Format period
+            const fromDateObj = new Date(from);
+            const toDateObj = new Date(to);
+            const periodStr = `${months[fromDateObj.getMonth()]} ${fromDateObj.getDate()} - ${months[toDateObj.getMonth()]} ${toDateObj.getDate()}, ${toDateObj.getFullYear()}`;
+
+            // Create row
+            const tr = document.createElement('tr');
+            tr.className = 'hover:bg-slate-50/50 transition duration-150';
+
+            // Choose file icon class
+            let iconClass = 'far fa-file-pdf text-red-500';
+            let badgeBg = 'bg-red-50 text-red-600 border-red-100';
+            if (fileExtension === 'csv') {
+                iconClass = 'fas fa-file-csv text-blue-500';
+                badgeBg = 'bg-blue-50 text-blue-600 border-blue-100';
+            } else if (fileExtension === 'xlsx') {
+                iconClass = 'far fa-file-excel text-green-600';
+                badgeBg = 'bg-green-50 text-green-600 border-green-100';
+            }
+
+            tr.innerHTML = `
+                <td class="py-4 pr-4 font-bold text-[#0F172A] flex items-center"><i class="${iconClass} text-lg mr-3"></i> ${fileName}</td>
+                <td class="py-4 px-4 font-medium text-gray-500">${periodStr}</td>
+                <td class="py-4 px-4"><span class="${badgeBg} text-[10px] font-black px-2.5 py-1 rounded border">${format}</span></td>
+                <td class="py-4 px-4 text-gray-500">${formattedDate}</td>
+                <td class="py-4 px-4 text-gray-500">${(Math.random() * 2 + 0.1).toFixed(1)} MB</td>
+                <td class="py-4 pl-4 text-right">
+                    <button class="text-blue-600 hover:text-blue-800 font-bold text-xs" onclick="simulateDownload('${fileName}')"><i class="fas fa-download mr-1"></i> Download</button>
+                </td>
+            `;
+
+            tbody.insertBefore(tr, tbody.firstChild);
+        }
+
+        // Simulate file download
+        function simulateDownload(name) {
+            showToast('Downloading', `Downloading ${name}...`, 'blue');
+            setTimeout(() => {
+                showToast('Success', `${name} successfully downloaded.`, 'green');
+            }, 800);
+        }
+
+        // Clear log
+        function clearHistory() {
+            document.getElementById('exportHistoryTbody').innerHTML = `
+                <tr>
+                    <td colspan="6" class="text-center py-8 text-gray-400 font-medium italic">No reports exported yet.</td>
+                </tr>
+            `;
+            showToast('Log Cleared', 'Export history log successfully cleared.', 'amber');
+        }
+
+        // Show Toast Popups
+        function showToast(title, message, color) {
+            const toast = document.getElementById('toastNotification');
+            const iconContainer = document.getElementById('toastIcon');
+            const titleEl = document.getElementById('toastTitle');
+            const msgEl = document.getElementById('toastMessage');
+
+            titleEl.textContent = title;
+            msgEl.textContent = message;
+
+            if (color === 'green') {
+                iconContainer.className = 'w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white';
+                iconContainer.innerHTML = '<i class="fas fa-check"></i>';
+            } else if (color === 'blue') {
+                iconContainer.className = 'w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white';
+                iconContainer.innerHTML = '<i class="fas fa-info"></i>';
+            } else if (color === 'amber') {
+                iconContainer.className = 'w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white';
+                iconContainer.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+            }
+
+            // Slide in
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            // Slide out after 3.5s
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+
+        // Chart.js Configuration
+        const ctx = document.getElementById('cashflowChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [
+                    {
+                        label: 'Inflow (Deposits)',
+                        data: [124000, 145000, 110000, 156000, 168000, 142500],
+                        backgroundColor: '#009668',
+                        borderRadius: 8,
+                        hoverBackgroundColor: '#05b57f'
+                    },
+                    {
+                        label: 'Outflow (Expenses)',
+                        data: [82000, 95000, 78000, 89000, 112000, 94200],
+                        backgroundColor: '#BA1A1A',
+                        borderRadius: 8,
+                        hoverBackgroundColor: '#e03636'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        padding: 12,
+                        backgroundColor: '#0F172A',
+                        titleFont: { family: 'Plus Jakarta Sans', weight: 'bold' },
+                        bodyFont: { family: 'Plus Jakarta Sans' },
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Plus Jakarta Sans',
+                                weight: 'bold',
+                                size: 11
+                            },
+                            color: '#94A3B8'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            borderDash: [5, 5],
+                            color: '#E2E8F0'
+                        },
+                        ticks: {
+                            font: {
+                                family: 'Plus Jakarta Sans',
+                                size: 10
+                            },
+                            color: '#94A3B8',
+                            callback: function(value) {
+                                return '$' + value / 1000 + 'k';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+    <script src="js/global-upload.js"></script>
+</body>
+</html>
